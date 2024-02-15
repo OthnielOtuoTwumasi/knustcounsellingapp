@@ -104,6 +104,7 @@ dependencies:
 
 
 dev_dependencies:
+  flutter_native_splash: ^2.3.1
   flutter_test:
     sdk: flutter
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -119,6 +120,11 @@ dependency_overrides:
   wakelock_windows: any
   win32: any
   
+flutter_native_splash:
+  color: "#071b5d"
+  image: assets/images/logo.png
+  android: true
+  ios: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

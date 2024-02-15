@@ -260,7 +260,7 @@ class _UserDrawerPageState extends State<UserDrawerPage> {
                                                 color: Colors.transparent,
                                                 image: DecorationImage(
                                                     image: AssetImage(
-                                                        'assets/Icons/splash_logo.jpeg'))),
+                                                        'assets/images/logo.png'))),
                                           ),
                                           SizedBox(
                                             width: 15.w,

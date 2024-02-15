@@ -84,11 +84,11 @@ class _UserHomePageState extends State<UserHomePage> {
                         onTap: () {
                           Get.toNamed(PageRoutes.userDrawer);
                         },
-                        child: Column(
+                        child: const Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SvgPicture.asset('assets/Icons/drawerIcon.svg',color: Colors.white,),
+                             Icon(Icons.menu,size: 30,)
                           ],
                         ),
                       ),
