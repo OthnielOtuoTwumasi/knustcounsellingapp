@@ -1,3 +1,4 @@
+import 'package:consultant_product/src/utils/colors.dart';
 import 'package:consultant_product/src/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:resize/resize.dart';
@@ -11,10 +12,10 @@ class ContactUsState {
     titleTextStyle = TextStyle(
         fontSize: 14.sp,
         fontFamily: SarabunFontFamily.medium,
-        color: Colors.white);
+        color: customtextDeepColor);
     subTitleTextStyle = TextStyle(
         fontSize: 12.sp,
         fontFamily: SarabunFontFamily.regular,
-        color: Colors.white);
+        color: customtextDeepColor);
   }
 }

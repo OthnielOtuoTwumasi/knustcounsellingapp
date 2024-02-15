@@ -80,7 +80,7 @@ class _ConsultantDrawerPageState extends State<ConsultantDrawerPage> {
                                   child: _generalController.getConsultantProfileModel.data == null
                                       ? SkeletonLoader(
                                           period: const Duration(seconds: 2),
-                                          highlightColor: Colors.grey,
+                                       highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
                                           direction: SkeletonDirection.ltr,
                                           builder: Row(
                                             crossAxisAlignment: CrossAxisAlignment.center,

@@ -27,7 +27,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
         child: _userHomeLogic.categoriesLoader!
             ? SkeletonLoader(
                 period: const Duration(seconds: 2),
-                highlightColor: Colors.grey,
+             highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
                 direction: SkeletonDirection.ltr,
                 builder: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -105,7 +105,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                 child: Container(
                                   height: 123.h,
                                   width: 106.w,
-                                  decoration: BoxDecoration(color: customTextFieldColor, borderRadius: BorderRadius.circular(8)),
+                                  decoration: BoxDecoration(color: customFormfieldbackgroundColor, borderRadius: BorderRadius.circular(8)),
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.center,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -114,27 +114,24 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
                                         height: 14.h,
                                       ),
                                       CircleAvatar(
+                                        backgroundColor: customHighlightsColor,
                                         radius: 20.r,
-                                        backgroundColor: _userHomeLogic.categoriesColor[index],
-                                        child: CircleAvatar(
-                                          radius: 18.r,
-                                          backgroundImage: NetworkImage(
-                                            _userHomeLogic.categoriesList[index].image!.contains('assets')
-                                                ? '$mediaUrl${_userHomeLogic.categoriesList[index].image!}'
-                                                : _userHomeLogic.categoriesList[index].image!,
-                                          ),
+                                        backgroundImage: NetworkImage(
+                                          _userHomeLogic.categoriesList[index].image!.contains('assets')
+                                              ? '$mediaUrl${_userHomeLogic.categoriesList[index].image!}'
+                                              : _userHomeLogic.categoriesList[index].image!,
                                         ),
                                       ),
                                       SizedBox(
-                                        height: 22.h,
+                                        height: 20.h,
                                       ),
                                       Text(
                                         '${_userHomeLogic.categoriesList[index].title}',
-                                        style: TextStyle(fontFamily: SarabunFontFamily.semiBold, fontSize: 14.sp, color: _userHomeLogic.categoriesColor[index]),
+                                        style: TextStyle(fontFamily: SarabunFontFamily.semiBold, fontSize: 14.sp, color: customtextDeepColor),
                                       ),
                                       Text(
                                         '(${_userHomeLogic.categoriesList[index].subTitle} ${LanguageConstant.consultants.tr})',
-                                        style: TextStyle(fontFamily: SarabunFontFamily.light, fontSize: 10.sp, color: customTextGreyColor),
+                                        style: TextStyle(fontFamily: SarabunFontFamily.light, fontSize: 10.sp, color: customTextBlackColor),
                                       ),
                                     ],
                                   ),

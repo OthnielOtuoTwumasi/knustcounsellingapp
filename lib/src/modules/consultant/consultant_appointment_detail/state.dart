@@ -44,7 +44,7 @@ class ConsultantAppointmentDetailState {
     sectionHeadingTextStyle = TextStyle(
         fontFamily: SarabunFontFamily.extraBold,
         fontSize: 14.sp,
-        color: customThemeColor
+        color: customtextDeepColor
     );
     sectionLabelTextStyle = TextStyle(
         fontFamily: SarabunFontFamily.regular,

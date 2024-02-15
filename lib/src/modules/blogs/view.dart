@@ -84,7 +84,7 @@ class _BlogsPageState extends State<BlogsPage> {
                           !_blogsLogic.blogLoader
                               ? SkeletonLoader(
                                   period: const Duration(seconds: 2),
-                                  highlightColor: Colors.grey,
+                                 highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
                                   direction: SkeletonDirection.ltr,
                                   builder: SizedBox(
                                     height: 207.h,
@@ -99,7 +99,7 @@ class _BlogsPageState extends State<BlogsPage> {
                                             height: 207.h,
                                             decoration: BoxDecoration(
                                               borderRadius: BorderRadius.circular(14),
-                                              color: Colors.grey,
+                                              color: customFormfieldbackgroundColor,
                                             ),
                                           ),
                                         );
@@ -197,7 +197,7 @@ class _BlogsPageState extends State<BlogsPage> {
                             child: !_blogsLogic.blogLoader
                                 ? SkeletonLoader(
                                     period: const Duration(seconds: 2),
-                                    highlightColor: Colors.grey,
+                                 highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
                                     direction: SkeletonDirection.ltr,
                                     builder: SizedBox(
                                       height: 220.h,
@@ -255,12 +255,12 @@ class _BlogsPageState extends State<BlogsPage> {
                           ),
 
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                             child: SingleChildScrollView(
                                 child: !_blogsLogic.blogLoader
                                     ? SkeletonLoader(
                                         period: const Duration(seconds: 2),
-                                        highlightColor: Colors.grey,
+                                     highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
                                         direction: SkeletonDirection.ltr,
                                         builder: Wrap(
                                             children: List.generate(
@@ -308,7 +308,7 @@ class _BlogsPageState extends State<BlogsPage> {
                                                                       Container(
                                                                         height: 25.h,
                                                                         width: 108.w,
-                                                                        decoration: BoxDecoration(color: customLightOrangeColor, borderRadius: BorderRadius.all(Radius.circular(6.r))),
+                                                                        decoration: BoxDecoration(color: customFormfieldbackgroundColor, borderRadius: BorderRadius.all(Radius.circular(6.r))),
                                                                         child: Center(
                                                                           child: Text(
                                                                             '${_blogsLogic.getAllBlogModel.data!.categoryBlogs![_blogsLogic.selectedBlogCategoryIndex!].category!.name}',
@@ -383,7 +383,7 @@ class _BlogsPageState extends State<BlogsPage> {
                                                                     height: 153.h,
                                                                     width: 128.w,
                                                                     decoration: BoxDecoration(
-                                                                      color: Colors.grey,
+                                                                      color: customFormfieldbackgroundColor,
                                                                       borderRadius: BorderRadius.all(Radius.circular(10.r)),
                                                                     ),
                                                                     child: ClipRRect(

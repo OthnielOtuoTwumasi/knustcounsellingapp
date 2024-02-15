@@ -115,6 +115,7 @@ class AppointmentDetailBox extends StatelessWidget {
                               ignoreGestures: true,
                               initialRating: rating!,
                               minRating: 1,
+                              unratedColor: customFormfieldbackgroundColor,
                               direction: Axis.horizontal,
                               allowHalfRating: true,
                               itemCount: 5,
@@ -181,7 +182,7 @@ class AppointmentDetailBox extends StatelessWidget {
                                 typeIcon!,
                                 height: 16.h,
                                 width: 18.w,
-                                color: customLightThemeColor,
+                                color: customtextDeepColor,
                               ),
                               SizedBox(
                                 width: 11.w,

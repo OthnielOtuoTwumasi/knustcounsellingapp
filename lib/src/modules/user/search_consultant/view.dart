@@ -82,7 +82,7 @@ class _SearchConsultantPageState extends State<SearchConsultantPage> {
                   _searchConsultantLogic.searchLoader!
                       ? SkeletonLoader(
                           period: const Duration(seconds: 2),
-                          highlightColor: Colors.grey,
+                       highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
                           direction: SkeletonDirection.ltr,
                           builder: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,7 +149,7 @@ class _SearchConsultantPageState extends State<SearchConsultantPage> {
                                                   children: [
                                                     ///---profile-image
                                                     Material(
-                                                      color: customLightThemeColor,
+                                                      color: customFormfieldbackgroundColor,
                                                       borderRadius: BorderRadius.circular(8.r),
                                                       child: _searchConsultantLogic.searchConsultantModel.data!.results![index].user!.imagePath == null
                                                           ? SizedBox(
@@ -188,7 +188,7 @@ class _SearchConsultantPageState extends State<SearchConsultantPage> {
                                                           '${_searchConsultantLogic.searchConsultantModel.data!.results![index].user!.lastName}',
                                                           softWrap: true,
                                                           overflow: TextOverflow.ellipsis,
-                                                          style: state.topTitleTextStyle!.copyWith(color: customTextBlackColor),
+                                                          style: state.topTitleTextStyle!.copyWith(color: customtextDeepColor),
                                                         ),
                                                         SizedBox(
                                                           height: 5.h,
@@ -212,6 +212,7 @@ class _SearchConsultantPageState extends State<SearchConsultantPage> {
                                                           allowHalfRating: true,
                                                           itemCount: 5,
                                                           itemSize: 15,
+                                                          unratedColor: customFormfieldbackgroundColor,
                                                           itemPadding: const EdgeInsets.symmetric(horizontal: 0.0),
                                                           itemBuilder: (context, _) => SvgPicture.asset('assets/Icons/ratingStarIcon.svg'),
                                                           onRatingUpdate: (rating) {},

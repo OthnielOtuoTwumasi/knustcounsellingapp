@@ -225,7 +225,7 @@ class _ChatPageState extends State<ChatPage> {
                             children: List.generate(10, (index) {
                               return SkeletonLoader(
                                 period: const Duration(seconds: 2),
-                                highlightColor: Colors.grey,
+                             highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
                                 direction: SkeletonDirection.ltr,
                                 builder: Padding(
                                   padding: index % 2 == 0

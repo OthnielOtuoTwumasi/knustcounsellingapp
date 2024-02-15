@@ -178,7 +178,7 @@ class _EditUserProfilePageState extends State<EditUserProfilePage> {
                   height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
                   decoration: const BoxDecoration(
-                      color: customTextFieldColor,
+                      color: custombackColor,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25.0),
                           topRight: Radius.circular(25.0))),
@@ -252,7 +252,7 @@ class _EditUserProfilePageState extends State<EditUserProfilePage> {
                                         16.w, 0.h, 16.w, 16.h),
                                     child: Row(
                                       children: [
-                                        Text('Hide Profile'.toUpperCase(),
+                                        Text('Hide Profile',
                                             style: state.hideTextStyle),
                                         const Spacer(),
                                         Switch(
@@ -303,7 +303,7 @@ class _EditUserProfilePageState extends State<EditUserProfilePage> {
                                                 25.w, 15.h, 25.w, 15.h),
                                         hintText: LanguageConstant.firstName.tr,
                                         hintStyle: state.hintTextStyle,
-                                        fillColor: Colors.white,
+                                        fillColor: customFormfieldbackgroundColor,
                                         filled: true,
                                         enabledBorder: OutlineInputBorder(
                                             borderRadius:
@@ -355,7 +355,7 @@ class _EditUserProfilePageState extends State<EditUserProfilePage> {
                                                 25.w, 15.h, 25.w, 15.h),
                                         hintText: LanguageConstant.lastName.tr,
                                         hintStyle: state.hintTextStyle,
-                                        fillColor: Colors.white,
+                                        fillColor: customFormfieldbackgroundColor,
                                         filled: true,
                                         enabledBorder: OutlineInputBorder(
                                             borderRadius:
@@ -412,7 +412,7 @@ class _EditUserProfilePageState extends State<EditUserProfilePage> {
                                             contentPadding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     15.w, 14.h, 15.w, 14.h),
-                                            fillColor: Colors.white,
+                                            fillColor: customFormfieldbackgroundColor,
                                             filled: true,
                                             enabledBorder: OutlineInputBorder(
                                                 borderRadius:
@@ -437,7 +437,7 @@ class _EditUserProfilePageState extends State<EditUserProfilePage> {
                                                     color: Colors.red)),
                                           ),
                                           isExpanded: true,
-                                          focusColor: Colors.white,
+                                          focusColor: customFormfieldbackgroundColor,
                                           style: state.textFieldTextStyle,
                                           iconEnabledColor: customThemeColor,
                                           icon: const Icon(
@@ -513,7 +513,7 @@ class _EditUserProfilePageState extends State<EditUserProfilePage> {
                                                       EdgeInsetsDirectional
                                                           .fromSTEB(15.w, 14.h,
                                                               15.w, 14.h),
-                                                  fillColor: Colors.white,
+                                                  fillColor: customFormfieldbackgroundColor,
                                                   filled: true,
                                                   enabledBorder: OutlineInputBorder(
                                                       borderRadius:
@@ -550,7 +550,7 @@ class _EditUserProfilePageState extends State<EditUserProfilePage> {
                                                                       .red)),
                                                 ),
                                                 isExpanded: true,
-                                                focusColor: Colors.white,
+                                                focusColor: customFormfieldbackgroundColor,
                                                 style: state.textFieldTextStyle,
                                                 iconEnabledColor:
                                                     customThemeColor,
@@ -643,7 +643,7 @@ class _EditUserProfilePageState extends State<EditUserProfilePage> {
                                                       EdgeInsetsDirectional
                                                           .fromSTEB(15.w, 14.h,
                                                               15.w, 14.h),
-                                                  fillColor: Colors.white,
+                                                  fillColor: customFormfieldbackgroundColor,
                                                   enabled: true,
                                                   filled: true,
                                                   enabledBorder: OutlineInputBorder(
@@ -732,7 +732,7 @@ class _EditUserProfilePageState extends State<EditUserProfilePage> {
                             ),
                           ),
                           Positioned(
-                            bottom: 0.h,
+                            bottom: 10.h,
                             left: 15.w,
                             right: 15.w,
                             child: InkWell(

@@ -90,7 +90,7 @@ class _ConsultantAppointmentPageState extends State<ConsultantAppointmentPage> w
                               labelColor: Colors.white,
                               labelStyle: state.tabBarSelectedTextStyle,
                               unselectedLabelStyle: state.tabBarUnSelectedTextStyle,
-                              unselectedLabelColor: customLightThemeColor,
+                              unselectedLabelColor: customtextDeepColor,
                               tabs: _consultantAppointmentLogic.tabBarList,
                             )),
                             pinned: true,

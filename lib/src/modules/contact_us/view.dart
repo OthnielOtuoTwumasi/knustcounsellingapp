@@ -109,7 +109,7 @@ class _ContactUsPageState extends State<ContactUsPage> {
                                         child: Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            SizedBox(height: 25.h),
+                                            SizedBox(height: 15.h),
 
                                             /// Address
                                             InkWell(
@@ -118,13 +118,13 @@ class _ContactUsPageState extends State<ContactUsPage> {
                                                     double.parse((Get.find<MainLogic>().getGeneralSettingModel.data?.longitude).toString()), 'Here');
                                               },
                                               child: Container(
-                                                decoration: BoxDecoration(color: customThemeColor, borderRadius: BorderRadius.all(Radius.circular(8.r))),
+                                                decoration: BoxDecoration(color: customFormfieldbackgroundColor, borderRadius: BorderRadius.all(Radius.circular(8.r))),
                                                 child: ListTile(
                                                   minLeadingWidth: 20.w,
                                                   leading: Column(
                                                     mainAxisAlignment: MainAxisAlignment.center,
                                                     children: [
-                                                      SvgPicture.asset('assets/Icons/location.svg'),
+                                                      SvgPicture.asset('assets/Icons/location.svg', color: customBackgroundDeepColor,), 
                                                     ],
                                                   ),
                                                   title: Text(
@@ -146,13 +146,13 @@ class _ContactUsPageState extends State<ContactUsPage> {
                                                 _contactUsLogic.makePhoneCall(Get.find<MainLogic>().getGeneralSettingModel.data!.phone ?? '');
                                               },
                                               child: Container(
-                                                decoration: BoxDecoration(color: customThemeColor, borderRadius: BorderRadius.all(Radius.circular(8.r))),
+                                                decoration: BoxDecoration(color: customFormfieldbackgroundColor, borderRadius: BorderRadius.all(Radius.circular(8.r))),
                                                 child: ListTile(
                                                   minLeadingWidth: 20.w,
                                                   leading: Column(
                                                     mainAxisAlignment: MainAxisAlignment.center,
                                                     children: [
-                                                      SvgPicture.asset('assets/Icons/drawerContactUsIcon.svg'),
+                                                      SvgPicture.asset('assets/Icons/drawerContactUsIcon.svg', color: customBackgroundDeepColor,),
                                                     ],
                                                   ),
                                                   title: Text(
@@ -174,13 +174,13 @@ class _ContactUsPageState extends State<ContactUsPage> {
                                                 _contactUsLogic.sendMail(Get.find<MainLogic>().getGeneralSettingModel.data?.companyEmail ?? '');
                                               },
                                               child: Container(
-                                                decoration: BoxDecoration(color: customThemeColor, borderRadius: BorderRadius.all(Radius.circular(8.r))),
+                                                decoration: BoxDecoration(color: customFormfieldbackgroundColor, borderRadius: BorderRadius.all(Radius.circular(8.r))),
                                                 child: ListTile(
                                                   minLeadingWidth: 20.w,
                                                   leading: Column(
                                                     mainAxisAlignment: MainAxisAlignment.center,
                                                     children: [
-                                                      SvgPicture.asset('assets/Icons/message.svg'),
+                                                      SvgPicture.asset('assets/Icons/message.svg', color: customBackgroundDeepColor,),
                                                     ],
                                                   ),
                                                   title: Text(

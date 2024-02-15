@@ -29,7 +29,7 @@ class MyAppointmentState {
     profileNameTextStyle = TextStyle(
         fontFamily: SarabunFontFamily.extraBold,
         fontSize: 16.sp,
-        color: customTextBlackColor
+        color: customtextDeepColor
     );
     profileCategoryTextStyle = TextStyle(
         fontFamily: SarabunFontFamily.light,

@@ -14,7 +14,7 @@ class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     return SizedBox.expand(
-      child: Container(color: customTextFieldColor, child: _tabBar),
+      child: Container(color: customFormfieldbackgroundColor, child: _tabBar),
     );
   }
 

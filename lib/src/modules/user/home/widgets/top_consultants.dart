@@ -24,7 +24,7 @@ class _TopConsultantsState extends State<TopConsultants> {
       return _userHomeLogic.featuredConsultantLoader!
           ? SkeletonLoader(
               period: const Duration(seconds: 2),
-              highlightColor: Colors.grey,
+           highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
               direction: SkeletonDirection.ltr,
               builder: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -102,7 +102,7 @@ class _TopConsultantsState extends State<TopConsultants> {
                                       Container(
                                         height: 126.h,
                                         width: 232.w,
-                                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(9.r), color: index % 2 == 0 ? customLightThemeColor : customOrangeColor),
+                                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(9.r), color: index % 2 == 0 ? customLightThemeColor : customLightThemeColor),
                                         child: Stack(
                                           children: [
                                             PositionedDirectional(

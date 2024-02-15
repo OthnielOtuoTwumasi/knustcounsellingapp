@@ -1,5 +1,6 @@
 import 'package:consultant_product/multi_language/language_constants.dart';
 import 'package:consultant_product/src/modules/consultant/consultant_appointment/logic.dart';
+import 'package:consultant_product/src/utils/colors.dart';
 import 'package:consultant_product/src/widgets/custom_sliver_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -35,7 +36,7 @@ class _PageLoaderForConsultantAppointmentsState
           body: SingleChildScrollView(
             child: SkeletonLoader(
                 period: const Duration(seconds: 2),
-                highlightColor: Colors.grey,
+             highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
                 direction: SkeletonDirection.ltr,
                 builder: Padding(
                   padding: const EdgeInsets.all(15.0),

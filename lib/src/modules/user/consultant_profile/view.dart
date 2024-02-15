@@ -99,7 +99,7 @@ class _ConsultantProfilePageState extends State<ConsultantProfilePage> {
                           background: _consultantProfileLogic.consultantProfileLoader!
                               ? SkeletonLoader(
                                   period: const Duration(seconds: 2),
-                                  highlightColor: Colors.grey,
+                               highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
                                   direction: SkeletonDirection.ltr,
                                   builder: Container(
                                     color: Colors.white,
@@ -196,7 +196,7 @@ class _ConsultantProfilePageState extends State<ConsultantProfilePage> {
                     _consultantProfileLogic.consultantProfileLoader!
                         ? SkeletonLoader(
                             period: const Duration(seconds: 2),
-                            highlightColor: Colors.grey,
+                         highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
                             direction: SkeletonDirection.ltr,
                             builder: Padding(
                               padding: const EdgeInsets.all(15.0),
@@ -264,6 +264,7 @@ class _ConsultantProfilePageState extends State<ConsultantProfilePage> {
                                 ///---rating-bar
                                 RatingBar.builder(
                                   ignoreGestures: true,
+                                  unratedColor: customFormfieldbackgroundColor,
                                   initialRating: double.parse((_consultantProfileLogic.consultantProfileModel.data?.userDetail?.ratingsAvg ?? 0).toString()),
                                   minRating: 1,
                                   direction: Axis.horizontal,
@@ -334,7 +335,7 @@ class _ConsultantProfilePageState extends State<ConsultantProfilePage> {
                                           crossAxisAlignment: CrossAxisAlignment.center,
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
-                                            SvgPicture.asset('assets/Icons/consultancyCountIcon.svg'),
+                                            SvgPicture.asset('assets/Icons/consultancyCountIcon.svg', color: customtextDeepColor,),
                                             SizedBox(
                                               width: 4.w,
                                             ),
@@ -370,7 +371,7 @@ class _ConsultantProfilePageState extends State<ConsultantProfilePage> {
                                           crossAxisAlignment: CrossAxisAlignment.center,
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
-                                            SvgPicture.asset('assets/Icons/checkIcon.svg'),
+                                            SvgPicture.asset('assets/Icons/checkIcon.svg', color: customtextDeepColor,),
                                             SizedBox(
                                               width: 4.w,
                                             ),
@@ -453,6 +454,7 @@ class _ConsultantProfilePageState extends State<ConsultantProfilePage> {
                                                 '${_consultantProfileLogic.imagesForAppointmentTypes[_consultantProfileLogic.appointmentTypes[index].appointmentTypeId! - 1]}',
                                                 height: 12.h,
                                                 width: 19.w,
+                                                color: customtextDeepColor,
                                               ),
                                               SizedBox(
                                                 width: 8.w,

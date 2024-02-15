@@ -245,7 +245,7 @@ class _SlotSelectionState extends State<SlotSelection> {
                           _bookAppointmentLogic.calenderLoader!
                               ? SkeletonLoader(
                                   period: const Duration(seconds: 2),
-                                  highlightColor: Colors.grey,
+                               highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
                                   direction: SkeletonDirection.ltr,
                                   builder: Container(
                                     width: MediaQuery.of(context).size.width,
@@ -285,7 +285,7 @@ class _SlotSelectionState extends State<SlotSelection> {
                           : _bookAppointmentLogic.getScheduleSlotsForMenteeLoader!
                               ? SkeletonLoader(
                                   period: const Duration(seconds: 2),
-                                  highlightColor: Colors.grey,
+                               highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
                                   direction: SkeletonDirection.ltr,
                                   builder: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,

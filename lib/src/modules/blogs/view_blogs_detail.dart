@@ -56,7 +56,7 @@ class _BlogDetailPage extends State<BlogDetailPage> {
                           ],
                         ),
                       ),
-                      backgroundColor: customThemeColor,
+                      backgroundColor: customFormfieldbackgroundColor,
                       actions: const [
                         ///---notifications
 
@@ -105,7 +105,7 @@ class _BlogDetailPage extends State<BlogDetailPage> {
                                 Container(
                                   height: 25.h,
                                   width: 108.w,
-                                  decoration: BoxDecoration(color: customLightOrangeColor, borderRadius: BorderRadius.all(Radius.circular(6.r))),
+                                  decoration: BoxDecoration(color: customFormfieldbackgroundColor, borderRadius: BorderRadius.all(Radius.circular(6.r))),
                                   child: Center(
                                     child: Text(
                                       '${_blogsLogic.selectedBlogCategory}',

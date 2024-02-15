@@ -29,7 +29,7 @@ class _TopRatedConsultantsState extends State<TopRatedConsultants> {
       return _userHomeLogic.topRatedLoader!
           ? SkeletonLoader(
               period: const Duration(seconds: 2),
-              highlightColor: Colors.grey,
+           highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
               direction: SkeletonDirection.ltr,
               builder: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,7 +126,7 @@ class _TopRatedConsultantsState extends State<TopRatedConsultants> {
                                     children: [
                                       ///---profile-image
                                       Material(
-                                        color: customLightThemeColor,
+                                        color: customFormfieldbackgroundColor,
                                         borderRadius: BorderRadius.circular(8.r),
                                         child: _userHomeLogic.topRatedConsultantList[index].image == null
                                             ? SizedBox(
@@ -172,7 +172,7 @@ class _TopRatedConsultantsState extends State<TopRatedConsultants> {
                                             softWrap: true,
                                             overflow: TextOverflow.ellipsis,
                                             maxLines: 1,
-                                            style: state.topTitleTextStyle!.copyWith(color: customTextBlackColor),
+                                            style: state.topTitleTextStyle!.copyWith(color: customtextDeepColor),
                                           ),
                                           SizedBox(
                                             height: 5.h,
@@ -192,6 +192,7 @@ class _TopRatedConsultantsState extends State<TopRatedConsultants> {
                                             ignoreGestures: true,
                                             initialRating: double.parse(_userHomeLogic.topRatedConsultantList[index].rating.toString()),
                                             minRating: 1,
+                                            unratedColor: customFormfieldbackgroundColor,
                                             direction: Axis.horizontal,
                                             allowHalfRating: true,
                                             itemCount: 5,

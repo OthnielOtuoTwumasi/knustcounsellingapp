@@ -29,13 +29,13 @@ class AllConsultantsState {
       color: customLightThemeColor,
     );
     consultantNameTextStyle = TextStyle(
-      fontFamily: SarabunFontFamily.extraBold,
-      fontSize: 14.sp,
-      color: customTextBlackColor,
+      fontFamily: SarabunFontFamily.bold,
+      fontSize: 15.sp,
+      color: customtextDeepColor,
     );
     consultantCategoryTextStyle = TextStyle(
       fontFamily: SarabunFontFamily.light,
-      fontSize: 11.sp,
+      fontSize: 13.sp,
       color: customTextBlackColor,
     );
   }

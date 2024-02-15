@@ -59,7 +59,7 @@ class AllBlogsPage extends StatelessWidget {
                       !logic.getAllBlogsLoader
                           ? SkeletonLoader(
                               period: const Duration(seconds: 2),
-                              highlightColor: Colors.grey,
+                           highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
                               direction: SkeletonDirection.ltr,
                               items: 5,
                               builder: Padding(
@@ -281,7 +281,7 @@ class AllBlogsPage extends StatelessWidget {
               //           !_allBlogsLogic.blogLoader
               //               ? SkeletonLoader(
               //               period: const Duration(seconds: 2),
-              //               highlightColor: Colors.grey,
+              //            highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
               //               direction: SkeletonDirection.ltr,
               //               builder: SizedBox(
               //                 height: 207.h,

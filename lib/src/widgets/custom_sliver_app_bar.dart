@@ -92,7 +92,7 @@ class _MyCustomSliverAppBarState extends State<MyCustomSliverAppBar> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              SizedBox(height: 25.h),
+                              SizedBox(height: 40.h),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
@@ -120,20 +120,20 @@ class _MyCustomSliverAppBarState extends State<MyCustomSliverAppBar> {
                                 ],
                               ),
                               SizedBox(
-                                height: 10.h,
+                                height: 5.h,
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     '${widget.subHeading}',
-                                    style: TextStyle(fontFamily: SarabunFontFamily.medium, fontSize: 12.sp, color: Colors.white),
+                                    style: TextStyle(fontFamily: SarabunFontFamily.medium, fontSize: 15.sp, color: Colors.white),
                                   ),
                                   widget.trailing == null
                                       ? const SizedBox()
                                       : Text(
                                           '${widget.trailing}',
-                                          style: TextStyle(fontFamily: SarabunFontFamily.medium, fontSize: 12.sp, color: Colors.white),
+                                          style: TextStyle(fontFamily: SarabunFontFamily.medium, fontSize: 13.sp, color: Colors.white),
                                         ),
                                 ],
                               ),

@@ -71,7 +71,7 @@ class _UserDrawerPageState extends State<UserDrawerPage> {
                                             null
                                         ? SkeletonLoader(
                                             period: const Duration(seconds: 2),
-                                            highlightColor: Colors.grey,
+                                         highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
                                             direction: SkeletonDirection.ltr,
                                             builder: Row(
                                               crossAxisAlignment:
@@ -142,7 +142,7 @@ class _UserDrawerPageState extends State<UserDrawerPage> {
                                                 height: 49.h,
                                                 width: 49.w,
                                                 decoration: const BoxDecoration(
-                                                    color: Colors.grey,
+                                                    color: customFormfieldbackgroundColor,
                                                     shape: BoxShape.circle),
                                                 child: _userHomeLogic
                                                             .getUserProfileModel
@@ -317,7 +317,7 @@ class _UserDrawerPageState extends State<UserDrawerPage> {
                                   : _userDrawerLogic.drawerList;
                           return Center(
                             child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 70.w),
+                              padding: EdgeInsets.symmetric(horizontal: 16.w),
                               child: FadedSlideAnimation(
                                 slideDuration:
                                     const Duration(milliseconds: 1000),
@@ -361,11 +361,11 @@ class _UserDrawerPageState extends State<UserDrawerPage> {
                                         style: state.titleTextStyle,
                                       ),
                                     ),
-                                    Divider(
-                                      color: Colors.white,
-                                      thickness: 1.5,
-                                      height: 10.h,
-                                    )
+                                    // Divider(
+                                    //   color: Colors.white,
+                                    //   thickness: 1.5,
+                                    //   height: 10.h,
+                                    // )
                                   ],
                                 ),
                               ),

@@ -17,7 +17,7 @@ class BlogsState {
     headingTextStyle = TextStyle(
         fontSize: 18.sp,
         fontFamily: SarabunFontFamily.extraBold,
-        color: customTextBlackColor);
+        color: customtextDeepColor);
     categoryTextStyle = TextStyle(
         fontSize: 16.sp,
         fontFamily: SarabunFontFamily.extraBold,
@@ -25,11 +25,11 @@ class BlogsState {
     blogCategoryTextStyle = TextStyle(
         fontSize: 10.sp,
         fontFamily: SarabunFontFamily.medium,
-        color: customOrangeColor);
+        color: customtextDeepColor);
     blogNameTextStyle = TextStyle(
         fontSize: 16.sp,
         fontFamily: SarabunFontFamily.semiBold,
-        color: customThemeColor);
+        color: customtextDeepColor);
     authorNameTextStyle = TextStyle(
         fontSize: 12.sp,
         fontFamily: SarabunFontFamily.medium,

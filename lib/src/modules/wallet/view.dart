@@ -141,7 +141,7 @@ class _WalletPageState extends State<WalletPage> {
                                                       width: 100.w,
                                                       child: SkeletonLoader(
                                                           period: const Duration(seconds: 2),
-                                                          highlightColor: Colors.grey,
+                                                       highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
                                                           direction: SkeletonDirection.ltr,
                                                           builder: Container(
                                                             height: 20.h,
@@ -200,7 +200,7 @@ class _WalletPageState extends State<WalletPage> {
                             _walletLogic.getAllTransactionLoader!
                                 ? SkeletonLoader(
                                     period: const Duration(seconds: 2),
-                                    highlightColor: Colors.grey,
+                                 highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
                                     direction: SkeletonDirection.ltr,
                                     builder: Wrap(
                                       children: List.generate(10, (index) {
