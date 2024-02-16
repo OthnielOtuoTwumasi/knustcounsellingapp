@@ -44,7 +44,7 @@ dependencies:
   intl_phone_field: ^3.0.1
   pin_code_fields: ^7.3.0
 
-  modal_progress_hud_nsn: ^0.1.0-nullsafety-1
+  modal_progress_hud_nsn: ^0.5.1
   skeleton_loader: ^2.0.0+4
 
   file_picker: 
@@ -89,9 +89,12 @@ dependencies:
   agora_rtc_engine: ^5.2.0
 
   # pusher client for live chat event
+  # pusher_client:
+  #   git:
+  #     url: git://github.com/thijskuilman/pusher_client.git
+
   pusher_client:
-    git:
-      url: git://github.com/thijskuilman/pusher_client.git
+    path: /Users/ernestjuniorawuku/Downloads/pusher_client-master
 
   firebase_core: ^2.2.0
   firebase_auth: ^4.1.2
@@ -118,7 +121,7 @@ dependency_overrides:
   modal_bottom_sheet: ^3.0.0-pre
   package_info_plus: ^4.0.1
   wakelock_windows: any
-  win32: any
+  win32: ^3.0.0
   
 flutter_native_splash:
   color: "#071b5d"
