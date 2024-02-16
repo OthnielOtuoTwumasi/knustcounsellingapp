@@ -400,4 +400,5 @@ class LanguageConstant {
   static const String signUpAsConsultant = 'sign_up_as_consultant';
   static const String theBalanceInAccountIsInsufficientForTheTransaction = 'the_balance_in_account_is_insufficient_for_the_transaction';
   static const String thankYouUsingJazzCashYourTransactionWasSuccessful = 'thank_you_using_jazzcash_your_transaction_was_successful';
+  
 }

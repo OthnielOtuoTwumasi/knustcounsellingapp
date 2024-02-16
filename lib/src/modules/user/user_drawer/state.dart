@@ -4,12 +4,18 @@ import 'package:resize/resize.dart';
 
 class UserDrawerState {
 
+  TextStyle? logonameTextStyle;
   TextStyle? nameTextStyle;
   TextStyle? emailTextStyle;
   TextStyle? titleTextStyle;
 
   UserDrawerState() {
     ///Initialize variables
+    logonameTextStyle = TextStyle(
+      fontFamily: SarabunFontFamily.extraBold,
+      fontSize: 18.sp,
+      color: Colors.white
+    );
     nameTextStyle = TextStyle(
       fontFamily: SarabunFontFamily.extraBold,
       fontSize: 16.sp,

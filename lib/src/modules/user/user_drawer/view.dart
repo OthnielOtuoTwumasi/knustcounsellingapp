@@ -6,6 +6,8 @@ import 'package:consultant_product/src/controller/general_controller.dart';
 import 'package:consultant_product/src/modules/user/home/logic.dart';
 import 'package:consultant_product/src/modules/user/user_drawer/logic.dart';
 import 'package:consultant_product/src/utils/colors.dart';
+import 'package:consultant_product/src/utils/constants.dart';
+import 'package:consultant_product/src/widgets/custom_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -71,7 +73,10 @@ class _UserDrawerPageState extends State<UserDrawerPage> {
                                             null
                                         ? SkeletonLoader(
                                             period: const Duration(seconds: 2),
-                                         highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
+                                            highlightColor:
+                                                customHighlightsColor,
+                                            baseColor:
+                                                customFormfieldbackgroundColor,
                                             direction: SkeletonDirection.ltr,
                                             builder: Row(
                                               crossAxisAlignment:
@@ -142,7 +147,8 @@ class _UserDrawerPageState extends State<UserDrawerPage> {
                                                 height: 49.h,
                                                 width: 49.w,
                                                 decoration: const BoxDecoration(
-                                                    color: customFormfieldbackgroundColor,
+                                                    color:
+                                                        customFormfieldbackgroundColor,
                                                     shape: BoxShape.circle),
                                                 child: _userHomeLogic
                                                             .getUserProfileModel
@@ -224,7 +230,8 @@ class _UserDrawerPageState extends State<UserDrawerPage> {
                                           children: [
                                             Center(
                                               child: SvgPicture.asset(
-                                                  'assets/Icons/drawerBackArrowIcon.svg', color: Colors.white),
+                                                  'assets/Icons/drawerBackArrowIcon.svg',
+                                                  color: Colors.white),
                                             ),
                                           ],
                                         ),
@@ -245,7 +252,7 @@ class _UserDrawerPageState extends State<UserDrawerPage> {
                                   Expanded(
                                     child: InkWell(
                                       onTap: () {
-                                        Get.toNamed(PageRoutes.login);
+                                        // Get.toNamed(PageRoutes.login);
                                       },
                                       child: Row(
                                         crossAxisAlignment:
@@ -266,8 +273,8 @@ class _UserDrawerPageState extends State<UserDrawerPage> {
                                             width: 15.w,
                                           ),
                                           Text(
-                                            LanguageConstant.letsLogin.tr,
-                                            style: state.nameTextStyle,
+                                            "KNUST Counselling Center",
+                                            style: state.logonameTextStyle,
                                           ),
                                           const Spacer()
                                         ],
@@ -280,7 +287,7 @@ class _UserDrawerPageState extends State<UserDrawerPage> {
                                       },
                                       child: Padding(
                                         padding: EdgeInsets.fromLTRB(
-                                            5.w, 5.h, 0, 5.h),
+                                            5.w, 5.h, 5.w, 5.h),
                                         child: Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
@@ -288,7 +295,9 @@ class _UserDrawerPageState extends State<UserDrawerPage> {
                                               CrossAxisAlignment.center,
                                           children: [
                                             SvgPicture.asset(
-                                                'assets/Icons/drawerBackArrowIcon.svg',color: Colors.white,),
+                                              'assets/Icons/drawerBackArrowIcon.svg',
+                                              color: Colors.white,
+                                            ),
                                           ],
                                         ),
                                       )),
@@ -373,6 +382,74 @@ class _UserDrawerPageState extends State<UserDrawerPage> {
                           );
                         }),
                       )),
+
+                      Get.find<GeneralController>()
+                              .storageBox
+                              .hasData('authToken')
+                          ? Container()
+                          : InkWell(
+                              onTap: () {
+                                Get.toNamed(PageRoutes.login);
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(25.0),
+                                child: Container(
+                                  color: customThemeColor,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(bottom: 25.h),
+                                    child: Container(
+                                      height: 50.h,
+                                      width: MediaQuery.of(context).size.width,
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(10.r),
+                                          boxShadow: [
+                                            BoxShadow(
+                                                color: customThemeColor
+                                                    .withOpacity(0.7),
+                                                spreadRadius: -18,
+                                                blurRadius: 30,
+                                                offset: const Offset(0, 30))
+                                          ]),
+                                      child: Stack(
+                                        children: [
+                                          Center(
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 25.w),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    'Let\'s Login',
+                                                    style: TextStyle(
+                                                        fontFamily:
+                                                            SarabunFontFamily
+                                                                .bold,
+                                                        fontSize: 18.sp,
+                                                        color:
+                                                            customtextDeepColor),
+                                                  ),
+                                                  SvgPicture.asset(
+                                                    'assets/Icons/whiteForwardIcon.svg',
+                                                    height: 29.h,
+                                                    width: 29.w,
+                                                    color: customtextDeepColor,
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
                     ],
                   ),
                 ),
