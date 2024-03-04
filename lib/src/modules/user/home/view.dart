@@ -84,17 +84,17 @@ class _UserHomePageState extends State<UserHomePage> {
                         onTap: () {
                           Get.toNamed(PageRoutes.userDrawer);
                         },
-                        child: Column(
+                        child: const Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SvgPicture.asset('assets/Icons/drawerIcon.svg',color: Colors.white,),
+                             Icon(Icons.menu,size: 30,)
                           ],
                         ),
                       ),
                       actions: const [
                         ///---notifications
-                        // CustomNotificationIcon(color: Colors.white,)
+                        CustomNotificationIcon(color: Colors.white,)
                       ],
                       flexibleSpace: FlexibleSpaceBar(
                         centerTitle: true,
@@ -121,7 +121,7 @@ class _UserHomePageState extends State<UserHomePage> {
                                       style: TextStyle(fontFamily: SarabunFontFamily.medium, fontSize: 17.sp, color: Colors.white),
                                     ),
                                     SizedBox(
-                                      height: 10.h,
+                                      height: 5.h,
                                     ),
                                     Text(LanguageConstant.mentor.tr, style: state.headingTextStyle),
                                     SizedBox(
@@ -140,12 +140,12 @@ class _UserHomePageState extends State<UserHomePage> {
                                           crossAxisAlignment: CrossAxisAlignment.center,
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
-                                            SvgPicture.asset('assets/Icons/searchIcon.svg'),
+                                            SvgPicture.asset('assets/Icons/searchIcon.svg', color: customtextDeepColor,),
                                           ],
                                         ),
                                         hintText: LanguageConstant.searchHere.tr,
                                         hintStyle: const TextStyle(fontFamily: SarabunFontFamily.medium, fontSize: 14, color: Color(0xffA3A7AA)),
-                                        fillColor: customTextFieldColor,
+                                        fillColor: Colors.white,
                                         filled: true,
                                         enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(22.r), borderSide: const BorderSide(color: Colors.transparent)),
                                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(22.r), borderSide: const BorderSide(color: Colors.transparent)),

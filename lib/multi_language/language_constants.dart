@@ -16,9 +16,9 @@ class LanguageConstant {
   static const String view = 'view';
   static const String minute = 'minute';
   static const String special = 'special';
-  static const String step3Of3 = 'step_3_of_3';
-  static const String step2Of3 = 'step_2_of_2';
-  static const String step1Of3 = 'step_1_of_2';
+  static const String step3Of3 = 'Step 3 of 3';
+  static const String step2Of3 = 'Step 2 of 2';
+  static const String step1Of3 = 'Step 1 of 2';
   static const String enterDetails = 'enter_details';
   static const String aboutYourSelf = 'about_your_self';
   static const String myWallet = 'my_wallet';
@@ -175,7 +175,13 @@ class LanguageConstant {
   static const String name = 'name';
   static const String email = 'email';
   static const String submit = 'submit';
-  static const String easySignUp = 'easy_sign_up';
+  static const String easySignUpText = 'easy_signup_text';
+  static const String professionalCounsellorsText ="professional_counsellors_text";
+  static const String multipleWaysCounsellorsHeading ="multiple_ways_counsellors_heading";
+  static const String multipleWaysCounsellorsText ="multiple_ways_counsellors_text";
+  static const String confidentialityAssuredHeading ="confidentiality_assured_heading";
+  static const String confidentialityAssuredText="confidentiality_assured_text";
+
   static const String professionalMentors = 'professional_mentors';
   static const String morning = 'morning';
   static const String afternoon = 'afternoon';
@@ -394,10 +400,15 @@ class LanguageConstant {
   static const String onlineStatus = 'online_status';
   static const String offlineStatus = 'offline_status';
   static const String orSignUpWith = 'or_sign_up_with';
+  static const String visionText= "vision_text";
+  static const String missionText= "mission_text";
+  static const String easySignUp ="easy_signup";
+
 
   static const String enterLast6DigitsOfYourCNIC = 'enter_last_6_digits_of_your_cnic';
   static const String enterAmount = 'enter_amount';
   static const String signUpAsConsultant = 'sign_up_as_consultant';
   static const String theBalanceInAccountIsInsufficientForTheTransaction = 'the_balance_in_account_is_insufficient_for_the_transaction';
   static const String thankYouUsingJazzCashYourTransactionWasSuccessful = 'thank_you_using_jazzcash_your_transaction_was_successful';
+  
 }

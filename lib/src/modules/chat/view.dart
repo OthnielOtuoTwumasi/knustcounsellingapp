@@ -38,16 +38,25 @@ class _ChatPageState extends State<ChatPage> {
   Channel? channel;
   String responseData = '';
 
+  bool isAppBarCollapsed = false;
+
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
-    Get.find<ChatLogic>().scrollController = ScrollController()..addListener(Get.find<ChatLogic>().scrollListener);
+     
+    Get.find<ChatLogic>().scrollController = ScrollController()
+      ..addListener(Get.find<ChatLogic>().scrollListener);
     getMethod(
         context,
         fetchMessagesUrl,
-        {'token': '123', 'receiver_id': Get.find<ChatLogic>().receiverMessageGetId, 'sender_id': Get.find<ChatLogic>().senderMessageGetId},
+        {
+          'token': '123',
+          'receiver_id': Get.find<ChatLogic>().receiverMessageGetId,
+          'sender_id': Get.find<ChatLogic>().senderMessageGetId
+        },
         true,
         fetchMessagesRepo);
     pusher = PusherClient(
@@ -69,9 +78,10 @@ class _ChatPageState extends State<ChatPage> {
     });
 
     channel = pusher!.subscribe("chat");
+    
 
     channel!.bind(r'App\Events\MessageSent', (event) {
-            print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
+      print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
       print(event!.data.toString());
       print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
       setState(() {
@@ -87,9 +97,14 @@ class _ChatPageState extends State<ChatPage> {
               Get.find<ChatLogic>().scrollController!.position.maxScrollExtent,
               curve: Curves.easeOut,
               duration: const Duration(milliseconds: 500)));
-      Future.delayed(const Duration(seconds: 1)).whenComplete(() => Get.find<ChatLogic>()
-          .chatScrollController!
-          .animateTo(Get.find<ChatLogic>().chatScrollController!.position.maxScrollExtent, curve: Curves.easeOut, duration: const Duration(milliseconds: 500)));
+      Future.delayed(const Duration(seconds: 1)).whenComplete(() =>
+          Get.find<ChatLogic>().chatScrollController!.animateTo(
+              Get.find<ChatLogic>()
+                  .chatScrollController!
+                  .position
+                  .maxScrollExtent,
+              curve: Curves.easeOut,
+              duration: const Duration(milliseconds: 500)));
       // Timer(
       //     const Duration(seconds: 1),
       //     () => Get.find<ChatLogic>().chatScrollController!.jumpTo(
@@ -98,11 +113,15 @@ class _ChatPageState extends State<ChatPage> {
       //             .position
       //             .maxScrollExtent));
     });
+
+    
   }
 
   @override
   void dispose() {
-    Get.find<ChatLogic>().scrollController!.removeListener(Get.find<ChatLogic>().scrollListener);
+    Get.find<ChatLogic>()
+        .scrollController!
+        .removeListener(Get.find<ChatLogic>().scrollListener);
     Get.find<ChatLogic>().scrollController!.dispose();
     super.dispose();
   }
@@ -120,7 +139,8 @@ class _ChatPageState extends State<ChatPage> {
               backgroundColor: const Color(0xffFBFBFB),
               body: NestedScrollView(
                 controller: _chatLogic.scrollController,
-                headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+                headerSliverBuilder:
+                    (BuildContext context, bool innerBoxIsScrolled) {
                   return <Widget>[
                     ///---header
                     SliverAppBar(
@@ -129,18 +149,36 @@ class _ChatPageState extends State<ChatPage> {
                       pinned: true,
                       snap: false,
                       elevation: 0,
-                      backgroundColor: _chatLogic.isShrink ? customThemeColor : Colors.transparent,
-                      leading: InkWell(
-                        onTap: () {
-                          Get.back();
-                        },
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset('assets/Icons/whiteBackArrow.svg'),
-                          ],
-                        ),
+                      backgroundColor: _chatLogic.isShrink
+                          ? customThemeColor
+                          : Colors.transparent,
+                      leading: Row(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Get.back();
+                            },
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left:15.0),
+                                  child: SvgPicture.asset(
+                                      'assets/Icons/whiteBackArrow.svg'),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: 20,),
+                          Visibility(
+                            visible: false,
+                            child: Text(
+                              '${_chatLogic.userName}',
+                              style: state.userNameTextStyle,
+                            ),
+                          ),
+                        ],
                       ),
                       actions: const [
                         ///---notifications
@@ -150,7 +188,10 @@ class _ChatPageState extends State<ChatPage> {
                       flexibleSpace: FlexibleSpaceBar(
                         centerTitle: true,
                         background: Container(
-                          decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.vertical(bottom: Radius.circular(40.r))),
+                          decoration: BoxDecoration(
+                              color: Colors.transparent,
+                              borderRadius: BorderRadius.vertical(
+                                  bottom: Radius.circular(40.r))),
                           child: Column(
                             children: [
                               Stack(
@@ -158,14 +199,17 @@ class _ChatPageState extends State<ChatPage> {
                                   SvgPicture.asset(
                                     'assets/images/bookAppointmentAppBar.svg',
                                     width: MediaQuery.of(context).size.width,
-                                    height: MediaQuery.of(context).size.height * .27,
+                                    height: MediaQuery.of(context).size.height *
+                                        .27,
                                     fit: BoxFit.fill,
                                   ),
                                   SafeArea(
                                     child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(16.w, 25.h, 16.w, 16.h),
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16.w, 25.h, 16.w, 16.h),
                                         child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             SizedBox(
                                               height: 25.h,
@@ -173,18 +217,29 @@ class _ChatPageState extends State<ChatPage> {
 
                                             ///---profile-area
                                             ListTile(
-                                              contentPadding: const EdgeInsets.all(0),
+                                              contentPadding:
+                                                  const EdgeInsets.all(0),
                                               leading: Container(
                                                 height: 49.h,
                                                 width: 49.w,
-                                                decoration: const BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
-                                                child: _chatLogic.userImage == null
+                                                decoration: const BoxDecoration(
+                                                    color: Colors.grey,
+                                                    shape: BoxShape.circle),
+                                                child: _chatLogic.userImage ==
+                                                        null
                                                     ? const SizedBox()
                                                     : ClipRRect(
-                                                        borderRadius: BorderRadius.circular(30.r),
-                                                        child: Image.network(_chatLogic.userImage!.contains('assets')
-                                                            ? '$mediaUrl${_chatLogic.userImage}'
-                                                            : _chatLogic.userImage!),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(30.r),
+                                                        child: Image.network(
+                                                            _chatLogic
+                                                                    .userImage!
+                                                                    .contains(
+                                                                        'assets')
+                                                                ? '$mediaUrl${_chatLogic.userImage}'
+                                                                : _chatLogic
+                                                                    .userImage!),
                                                       ),
                                               ),
 
@@ -202,7 +257,10 @@ class _ChatPageState extends State<ChatPage> {
                                             ),
 
                                             SizedBox(
-                                              height: MediaQuery.of(context).size.height * .03,
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  .03,
                                             ),
                                           ],
                                         )),
@@ -225,12 +283,15 @@ class _ChatPageState extends State<ChatPage> {
                             children: List.generate(10, (index) {
                               return SkeletonLoader(
                                 period: const Duration(seconds: 2),
-                                highlightColor: Colors.grey,
+                                highlightColor: customHighlightsColor,
+                                baseColor: customFormfieldbackgroundColor,
                                 direction: SkeletonDirection.ltr,
                                 builder: Padding(
                                   padding: index % 2 == 0
-                                      ? EdgeInsetsDirectional.fromSTEB(80.w, 7.h, 15.w, 7.h)
-                                      : EdgeInsetsDirectional.fromSTEB(15.w, 7.h, 80.w, 7.h),
+                                      ? EdgeInsetsDirectional.fromSTEB(
+                                          80.w, 7.h, 15.w, 7.h)
+                                      : EdgeInsetsDirectional.fromSTEB(
+                                          15.w, 7.h, 80.w, 7.h),
                                   child: Container(
                                     height: 50,
                                     width: 100,
@@ -243,12 +304,14 @@ class _ChatPageState extends State<ChatPage> {
                                                 topRight: Radius.circular(20),
                                               )
                                             : const BorderRadius.only(
-                                                bottomRight: Radius.circular(20),
+                                                bottomRight:
+                                                    Radius.circular(20),
                                                 topLeft: Radius.circular(20),
                                                 topRight: Radius.circular(20),
                                               )),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.all(14.0),
+                                      padding:
+                                          const EdgeInsetsDirectional.all(14.0),
                                       child: Container(
                                         color: Colors.white,
                                         height: 50,
@@ -275,48 +338,109 @@ class _ChatPageState extends State<ChatPage> {
                                         child: Text(
                                           LanguageConstant.notAvailableYet.tr,
                                           textAlign: TextAlign.center,
-                                          style: TextStyle(fontSize: 25.sp, fontFamily: SarabunFontFamily.bold, color: Colors.black),
+                                          style: TextStyle(
+                                              fontSize: 25.sp,
+                                              fontFamily:
+                                                  SarabunFontFamily.bold,
+                                              color: Colors.black),
                                         ),
                                       )
                                     : Expanded(
                                         child: ListView(
-                                        controller: _chatLogic.chatScrollController,
-                                        children: List.generate(_chatLogic.messageList.length, (index) {
+                                        controller:
+                                            _chatLogic.chatScrollController,
+                                        children: List.generate(
+                                            _chatLogic.messageList.length,
+                                            (index) {
                                           return Padding(
-                                            padding: _chatLogic.messageList[index].senderId == Get.find<GeneralController>().storageBox.read('userID')
-                                                ? EdgeInsetsDirectional.fromSTEB(80.w, 0, 15.w, 7.h)
-                                                : EdgeInsetsDirectional.fromSTEB(15.w, 15.h, 80.w, 7.h),
+                                            padding: _chatLogic
+                                                        .messageList[index]
+                                                        .senderId ==
+                                                    Get.find<
+                                                            GeneralController>()
+                                                        .storageBox
+                                                        .read('userID')
+                                                ? EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        80.w, 0, 15.w, 7.h)
+                                                : EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        15.w, 15.h, 80.w, 7.h),
                                             child: Row(
-                                              mainAxisAlignment:
-                                                  _chatLogic.messageList[index].senderId == Get.find<GeneralController>().storageBox.read('userID')
-                                                      ? MainAxisAlignment.end
-                                                      : MainAxisAlignment.start,
+                                              mainAxisAlignment: _chatLogic
+                                                          .messageList[index]
+                                                          .senderId ==
+                                                      Get.find<
+                                                              GeneralController>()
+                                                          .storageBox
+                                                          .read('userID')
+                                                  ? MainAxisAlignment.end
+                                                  : MainAxisAlignment.start,
                                               children: [
                                                 Flexible(
                                                   child: Container(
                                                     decoration: BoxDecoration(
-                                                        color: _chatLogic.messageList[index].senderId == Get.find<GeneralController>().storageBox.read('userID')
+                                                        color: _chatLogic
+                                                                    .messageList[
+                                                                        index]
+                                                                    .senderId ==
+                                                                Get.find<
+                                                                        GeneralController>()
+                                                                    .storageBox
+                                                                    .read(
+                                                                        'userID')
                                                             ? customTextFieldColor
                                                             : customLightThemeColor,
-                                                        borderRadius:
-                                                            _chatLogic.messageList[index].senderId == Get.find<GeneralController>().storageBox.read('userID')
-                                                                ? BorderRadius.only(
-                                                                    bottomLeft: Radius.circular(20.r),
-                                                                    topLeft: Radius.circular(20.r),
-                                                                    topRight: Radius.circular(20.r),
-                                                                  )
-                                                                : BorderRadius.only(
-                                                                    bottomRight: Radius.circular(20.r),
-                                                                    topLeft: Radius.circular(20.r),
-                                                                    topRight: Radius.circular(20.r),
-                                                                  )),
+                                                        borderRadius: _chatLogic
+                                                                    .messageList[
+                                                                        index]
+                                                                    .senderId ==
+                                                                Get.find<
+                                                                        GeneralController>()
+                                                                    .storageBox
+                                                                    .read(
+                                                                        'userID')
+                                                            ? BorderRadius.only(
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        20.r),
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        20.r),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        20.r),
+                                                              )
+                                                            : BorderRadius.only(
+                                                                bottomRight: Radius
+                                                                    .circular(
+                                                                        20.r),
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        20.r),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        20.r),
+                                                              )),
                                                     child: Padding(
-                                                      padding: const EdgeInsetsDirectional.all(14.0),
-                                                      child: Text('${_chatLogic.messageList[index].message}',
-                                                          style:
-                                                              _chatLogic.messageList[index].senderId == Get.find<GeneralController>().storageBox.read('userID')
-                                                                  ? state.replyTextStyle
-                                                                  : state.messageTextStyle!),
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .all(14.0),
+                                                      child: Text(
+                                                          '${_chatLogic.messageList[index].message}',
+                                                          style: _chatLogic
+                                                                      .messageList[
+                                                                          index]
+                                                                      .senderId ==
+                                                                  Get.find<
+                                                                          GeneralController>()
+                                                                      .storageBox
+                                                                      .read(
+                                                                          'userID')
+                                                              ? state
+                                                                  .replyTextStyle
+                                                              : state
+                                                                  .messageTextStyle!),
                                                     ),
                                                   ),
                                                 ),
@@ -336,7 +460,8 @@ class _ChatPageState extends State<ChatPage> {
                           Align(
                             alignment: Alignment.bottomCenter,
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(15.w, 0, 15.w, 15.h),
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  15.w, 0, 15.w, 15.h),
                               child: Row(
                                 children: [
                                   Expanded(
@@ -344,7 +469,7 @@ class _ChatPageState extends State<ChatPage> {
                                       style: TextStyle(
                                         fontFamily: SarabunFontFamily.regular,
                                         fontSize: 14.sp,
-                                        color: Colors.white,
+                                        color: customtextDeepColor,
                                       ),
                                       controller: _chatLogic.messageController,
                                       onTap: () {
@@ -357,63 +482,98 @@ class _ChatPageState extends State<ChatPage> {
                                       keyboardType: TextInputType.multiline,
                                       maxLines: null,
                                       onChanged: (value) {
-                                        if (_chatLogic.messageController.text.isEmpty) {
+                                        if (_chatLogic
+                                            .messageController.text.isEmpty) {
                                           _chatLogic.updateShowSendIcon(false);
                                         } else {
                                           _chatLogic.updateShowSendIcon(true);
                                         }
                                       },
                                       onFieldSubmitted: (value) {
-                                        Get.find<GeneralController>().notificationRouteApp = null;
+                                        Get.find<GeneralController>()
+                                            .notificationRouteApp = null;
                                         _generalController.focusOut(context);
                                         postMethod(
                                             context,
                                             sendMessageUrl,
                                             {
                                               'token': '123',
-                                              'receiver_id': Get.find<ChatLogic>().receiverMessageGetId,
-                                              'sender_id': Get.find<ChatLogic>().senderMessageGetId,
-                                              'message': _chatLogic.messageController.text
+                                              'receiver_id':
+                                                  Get.find<ChatLogic>()
+                                                      .receiverMessageGetId,
+                                              'sender_id': Get.find<ChatLogic>()
+                                                  .senderMessageGetId,
+                                              'message': _chatLogic
+                                                  .messageController.text
                                             },
                                             true,
                                             sendMessagesRepo);
                                       },
-                                      textDirection: _generalController.isDirectionRTL(context) ? TextDirection.rtl : TextDirection.ltr,
+                                      textDirection: _generalController
+                                              .isDirectionRTL(context)
+                                          ? TextDirection.rtl
+                                          : TextDirection.ltr,
                                       decoration: InputDecoration(
-                                        contentPadding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 20.w),
+                                        contentPadding: EdgeInsets.symmetric(
+                                            vertical: 10.h, horizontal: 20.w),
                                         filled: true,
-                                        fillColor: customThemeColor,
-                                        hintText: '${LanguageConstant.yourTextHere.tr}.....',
+                                        fillColor:
+                                            customFormfieldbackgroundColor,
+                                        hintText:
+                                            '${LanguageConstant.yourTextHere.tr}.....',
                                         hintStyle: state.textFieldTextStyle,
-                                        enabledBorder:
-                                            OutlineInputBorder(borderRadius: BorderRadius.circular(14.r), borderSide: const BorderSide(color: Colors.white)),
+                                        enabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(14.r),
+                                            borderSide: const BorderSide(
+                                                color: Colors.white)),
                                         focusedBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(14.r), borderSide: const BorderSide(color: customThemeColor)),
-                                        errorBorder:
-                                            OutlineInputBorder(borderRadius: BorderRadius.circular(14.r), borderSide: const BorderSide(color: Colors.red)),
-                                        border:
-                                            OutlineInputBorder(borderRadius: BorderRadius.circular(14.r), borderSide: const BorderSide(color: Colors.white)),
+                                            borderRadius:
+                                                BorderRadius.circular(14.r),
+                                            borderSide: const BorderSide(
+                                                color: customThemeColor)),
+                                        errorBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(14.r),
+                                            borderSide: const BorderSide(
+                                                color: Colors.red)),
+                                        border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(14.r),
+                                            borderSide: const BorderSide(
+                                                color: Colors.white)),
                                       ),
                                     ),
                                   ),
                                   _chatLogic.showSendIcon!
                                       ? Padding(
-                                          padding: EdgeInsetsDirectional.fromSTEB(10.w, 0, 0, 0),
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10.w, 0, 0, 0),
                                           child: InkWell(
                                             onTap: () {
-                                              Get.find<GeneralController>().notificationRouteApp = null;
-                                              _generalController.focusOut(context);
+                                              Get.find<GeneralController>()
+                                                  .notificationRouteApp = null;
+                                              _generalController
+                                                  .focusOut(context);
                                               postMethod(
                                                   context,
                                                   sendMessageUrl,
                                                   {
                                                     'token': '123',
-                                                    'receiver_id': Get.find<ChatLogic>().receiverMessageGetId,
-                                                    'sender_id': Get.find<ChatLogic>().senderMessageGetId,
-                                                    'message': _chatLogic.messageController.text
+                                                    'receiver_id': Get.find<
+                                                            ChatLogic>()
+                                                        .receiverMessageGetId,
+                                                    'sender_id':
+                                                        Get.find<ChatLogic>()
+                                                            .senderMessageGetId,
+                                                    'message': _chatLogic
+                                                        .messageController.text
                                                   },
                                                   true,
                                                   sendMessagesRepo);
+                                              _chatLogic.messageController
+                                                  .clear();
                                             },
                                             child: const CircleAvatar(
                                               radius: 20,

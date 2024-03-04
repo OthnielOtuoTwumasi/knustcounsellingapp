@@ -641,27 +641,27 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                                     SizedBox(height: 20.h),
 
                                     ///---T&C
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          '${LanguageConstant.byLoginYouAreAgreeWithOur.tr} ',
-                                          style: state.descTextStyle,
-                                        ),
-                                        InkWell(
-                                          onTap: () {
-                                            showDialog(
-                                              context: context,
-                                              builder: (BuildContext context) => _buildPopupDialog(context),
-                                            );
-                                          },
-                                          child: Text(
-                                            LanguageConstant.termsAndConditions.tr,
-                                            style: state.descTextStyle!.copyWith(color: customLightThemeColor, decoration: TextDecoration.underline, fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                    // Row(
+                                    //   mainAxisAlignment: MainAxisAlignment.center,
+                                    //   children: [
+                                    //     Text(
+                                    //       '${LanguageConstant.byLoginYouAreAgreeWithOur.tr} ',
+                                    //       style: state.descTextStyle,
+                                    //     ),
+                                    //     InkWell(
+                                    //       onTap: () {
+                                    //         showDialog(
+                                    //           context: context,
+                                    //           builder: (BuildContext context) => _buildPopupDialog(context),
+                                    //         );
+                                    //       },
+                                    //       child: Text(
+                                    //         LanguageConstant.termsAndConditions.tr,
+                                    //         style: state.descTextStyle!.copyWith(color: customLightThemeColor, decoration: TextDecoration.underline, fontWeight: FontWeight.bold),
+                                    //       ),
+                                    //     ),
+                                    //   ],
+                                    // ),
                                     SizedBox(height: 20.h),
                                   ],
                                 ),
@@ -712,7 +712,6 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       contentPadding: const EdgeInsets.fromLTRB(0.0, 20.0, 24.0, 24.0),
       title: const Text('Terms And Conditions'),
       content: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.5,
         child: SingleChildScrollView(
           child: Html(
             data: '${Get.find<MainLogic>().termsConditionModel.data?.value}',

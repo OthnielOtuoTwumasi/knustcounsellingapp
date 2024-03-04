@@ -173,7 +173,7 @@ class _AppointmentDetailPageState extends State<AppointmentDetailPage> {
                                                             'assets/Icons/chatIcon.svg',
                                                             height: 15.h,
                                                             width: 15.w,
-                                                            color: customOrangeColor,
+                                                            color: customtextDeepColor,
                                                             fit: BoxFit.cover,
                                                           )),
                                                         ),

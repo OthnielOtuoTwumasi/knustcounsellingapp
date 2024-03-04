@@ -14,7 +14,8 @@ import 'package:resize/resize.dart';
 import '../logic.dart';
 
 class ConsultantGridView extends StatefulWidget {
-  const ConsultantGridView({Key? key, required this.parentIndex}) : super(key: key);
+  const ConsultantGridView({Key? key, required this.parentIndex})
+      : super(key: key);
 
   final int parentIndex;
 
@@ -32,23 +33,38 @@ class _ConsultantGridViewState extends State<ConsultantGridView> {
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 20.h, 0, 0),
             child: Center(
-              child: _allConsultantsLogic.allConsultantList[widget.parentIndex].mentors!.data!.isEmpty
+              child: _allConsultantsLogic.allConsultantList[widget.parentIndex]
+                      .mentors!.data!.isEmpty
                   ? Text(
                       'No Record Found',
-                      style: TextStyle(fontFamily: SarabunFontFamily.regular, fontSize: 16.sp, color: customTextBlackColor),
+                      style: TextStyle(
+                          fontFamily: SarabunFontFamily.regular,
+                          fontSize: 15.sp,
+                          color: customTextBlackColor),
                     )
                   : Wrap(
                       spacing: 12.w,
                       runSpacing: 18.h,
                       alignment: WrapAlignment.start,
                       children: List.generate(
-                        _allConsultantsLogic.allConsultantList[widget.parentIndex].mentors!.data!.length,
+                        _allConsultantsLogic
+                            .allConsultantList[widget.parentIndex]
+                            .mentors!
+                            .data!
+                            .length,
                         (index) => Padding(
                           padding: EdgeInsets.only(top: 0.h),
                           child: InkWell(
                             onTap: () {
-                              Get.find<UserHomeLogic>().selectedConsultantID = _allConsultantsLogic.allConsultantList[widget.parentIndex].mentors!.data![index].user?.id;
-                              Get.find<UserHomeLogic>().selectedConsultantName = '${_allConsultantsLogic.allConsultantList[widget.parentIndex].mentors!.data![index].user?.firstName} '
+                              Get.find<UserHomeLogic>().selectedConsultantID =
+                                  _allConsultantsLogic
+                                      .allConsultantList[widget.parentIndex]
+                                      .mentors!
+                                      .data![index]
+                                      .user
+                                      ?.id;
+                              Get.find<UserHomeLogic>().selectedConsultantName =
+                                  '${_allConsultantsLogic.allConsultantList[widget.parentIndex].mentors!.data![index].user?.firstName} '
                                   '${_allConsultantsLogic.allConsultantList[widget.parentIndex].mentors!.data![index].user?.lastName}';
                               Get.find<UserHomeLogic>().update();
                               Get.toNamed(PageRoutes.consultantProfileForUser);
@@ -57,38 +73,66 @@ class _ConsultantGridViewState extends State<ConsultantGridView> {
                               width: 164.w,
                               decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.all(Radius.circular(8.r)),
-                                  boxShadow: const [BoxShadow(color: Color(0xffF5F5F5), blurRadius: 10.0, spreadRadius: 5.0, offset: Offset(5, -3))]),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(8.r)),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                        color: Color(0xffF5F5F5),
+                                        blurRadius: 10.0,
+                                        spreadRadius: 5.0,
+                                        offset: Offset(5, -3))
+                                  ]),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   ///---profile-image
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(16.w, 16.h, 16.w, 14.h),
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        16.w, 16.h, 16.w, 14.h),
                                     child: Container(
-                                      color: customLightThemeColor,
+                                      decoration: BoxDecoration(
+                                        color: customFormfieldbackgroundColor,
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
                                       height: 114.h,
                                       width: 132.w,
-                                      child: _allConsultantsLogic.allConsultantList[widget.parentIndex].mentors?.data?[index].user?.imagePath == null
+                                      child: _allConsultantsLogic
+                                                  .allConsultantList[
+                                                      widget.parentIndex]
+                                                  .mentors
+                                                  ?.data?[index]
+                                                  .user
+                                                  ?.imagePath ==
+                                              null
                                           ? const SizedBox()
-                                          : Image.network(
-                                              (_allConsultantsLogic.allConsultantList[widget.parentIndex].mentors?.data?[index].user?.imagePath ?? "").contains('assets')
-                                                  ? '$mediaUrl${_allConsultantsLogic.allConsultantList[widget.parentIndex].mentors!.data![index].user!.imagePath}'
-                                                  : '${_allConsultantsLogic.allConsultantList[widget.parentIndex].mentors!.data![index].user!.imagePath}',
-                                              width: double.infinity,
-                                              fit: BoxFit.fill,
-                                              height: double.infinity,
-                                              // loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
-                                              //   if (loadingProgress == null) return child;
-                                              //   return Center(
-                                              //     child: CircularProgressIndicator(
-                                              //       value: loadingProgress.expectedTotalBytes != null ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes! : null,
-                                              //     ),
-                                              //   );
-                                              // },
-                                              errorBuilder: (context, object, trace) {
-                                                return const Icon(Icons.broken_image, size: 30, color: Colors.white);
-                                              },
+                                          : ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                              child: Image.network(
+                                                (_allConsultantsLogic
+                                                                .allConsultantList[
+                                                                    widget
+                                                                        .parentIndex]
+                                                                .mentors
+                                                                ?.data?[index]
+                                                                .user
+                                                                ?.imagePath ??
+                                                            "")
+                                                        .contains('assets')
+                                                    ? '$mediaUrl${_allConsultantsLogic.allConsultantList[widget.parentIndex].mentors!.data![index].user!.imagePath}'
+                                                    : '${_allConsultantsLogic.allConsultantList[widget.parentIndex].mentors!.data![index].user!.imagePath}',
+                                                width: double.infinity,
+                                                height: double.infinity,
+                                                fit: BoxFit
+                                                    .fill, // Set BoxFit to cover the entire container without distortion
+                                                errorBuilder:
+                                                    (context, object, trace) {
+                                                  return const Icon(
+                                                      Icons.broken_image,
+                                                      size: 30,
+                                                      color: Colors.white);
+                                                },
+                                              ),
                                             ),
                                     ),
                                   ),
@@ -100,28 +144,50 @@ class _ConsultantGridViewState extends State<ConsultantGridView> {
                                     maxLines: 1,
                                     softWrap: true,
                                     overflow: TextOverflow.ellipsis,
-                                    style: _allConsultantsLogic.state.consultantNameTextStyle,
+                                    style: _allConsultantsLogic
+                                        .state.consultantNameTextStyle,
                                   ),
-                                  SizedBox(height: 8.h),
+                                  // SizedBox(height: 8.h),
 
                                   ///---category
                                   Text(
-                                    _allConsultantsLogic.allConsultantList[widget.parentIndex].mentors?.data?[index].category?.name ?? "N/A",
-                                    style: _allConsultantsLogic.state.consultantCategoryTextStyle,
+                                    _allConsultantsLogic
+                                            .allConsultantList[
+                                                widget.parentIndex]
+                                            .mentors
+                                            ?.data?[index]
+                                            .category
+                                            ?.name ??
+                                        "N/A",
+                                    style: _allConsultantsLogic
+                                        .state.consultantCategoryTextStyle,
                                   ),
-                                  SizedBox(height: 6.h),
+                                  SizedBox(height: 8.h),
 
                                   ///---rating
                                   RatingBar.builder(
                                     ignoreGestures: true,
-                                    initialRating: double.parse((_allConsultantsLogic.allConsultantList[widget.parentIndex].mentors?.data?[index].ratingAvg ?? 0).toString()),
+                                    initialRating: double.parse(
+                                        (_allConsultantsLogic
+                                                    .allConsultantList[
+                                                        widget.parentIndex]
+                                                    .mentors
+                                                    ?.data?[index]
+                                                    .ratingAvg ??
+                                                0)
+                                            .toString()),
                                     minRating: 1,
+                                    unratedColor:
+                                        customFormfieldbackgroundColor,
                                     direction: Axis.horizontal,
                                     allowHalfRating: true,
                                     itemCount: 5,
                                     itemSize: 15,
-                                    itemPadding: const EdgeInsets.symmetric(horizontal: 0.0),
-                                    itemBuilder: (context, _) => SvgPicture.asset('assets/Icons/ratingStarIcon.svg'),
+                                    itemPadding: const EdgeInsets.symmetric(
+                                        horizontal: 0.0),
+                                    itemBuilder: (context, _) =>
+                                        SvgPicture.asset(
+                                            'assets/Icons/ratingStarIcon.svg'),
                                     onRatingUpdate: (rating) {},
                                   ),
                                   SizedBox(height: 16.h),
@@ -133,7 +199,12 @@ class _ConsultantGridViewState extends State<ConsultantGridView> {
                       )),
             ),
           ),
-          (_allConsultantsLogic.allConsultantList[widget.parentIndex].mentors?.currentPage ?? 0) < (_allConsultantsLogic.allConsultantList[widget.parentIndex].mentors?.lastPage ?? 0)
+          (_allConsultantsLogic.allConsultantList[widget.parentIndex].mentors
+                          ?.currentPage ??
+                      0) <
+                  (_allConsultantsLogic.allConsultantList[widget.parentIndex]
+                          .mentors?.lastPage ??
+                      0)
               ? _allConsultantsLogic.allConsultantMoreLoader!
                   ? Padding(
                       padding: EdgeInsets.only(top: 25.h),
@@ -150,16 +221,25 @@ class _ConsultantGridViewState extends State<ConsultantGridView> {
                           padding: EdgeInsets.only(bottom: 30.h),
                           child: InkWell(
                             onTap: () {
-                              _allConsultantsLogic.selectedParentIndexForMore = widget.parentIndex;
+                              _allConsultantsLogic.selectedParentIndexForMore =
+                                  widget.parentIndex;
                               _allConsultantsLogic.update();
-                              _allConsultantsLogic.updateAllConsultantMoreLoader(true);
+                              _allConsultantsLogic
+                                  .updateAllConsultantMoreLoader(true);
 
                               getMethod(
                                   context,
                                   getCategoriesWithMentorURL,
                                   {
-                                    'category_id': _allConsultantsLogic.allConsultantList[widget.parentIndex].id,
-                                    'page': _allConsultantsLogic.allConsultantList[widget.parentIndex].mentors!.currentPage! + 1
+                                    'category_id': _allConsultantsLogic
+                                        .allConsultantList[widget.parentIndex]
+                                        .id,
+                                    'page': _allConsultantsLogic
+                                            .allConsultantList[
+                                                widget.parentIndex]
+                                            .mentors!
+                                            .currentPage! +
+                                        1
                                   },
                                   false,
                                   getCategoriesWithConsultantMoreRepo);
@@ -167,11 +247,17 @@ class _ConsultantGridViewState extends State<ConsultantGridView> {
                             child: Container(
                               height: 36.h,
                               width: 116.w,
-                              decoration: BoxDecoration(color: Colors.white, border: Border.all(color: customThemeColor), borderRadius: BorderRadius.circular(18.r)),
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  border: Border.all(color: customThemeColor),
+                                  borderRadius: BorderRadius.circular(18.r)),
                               child: Center(
                                 child: Text(
                                   'Load More',
-                                  style: TextStyle(fontFamily: SarabunFontFamily.medium, fontSize: 12.sp, color: customThemeColor),
+                                  style: TextStyle(
+                                      fontFamily: SarabunFontFamily.medium,
+                                      fontSize: 12.sp,
+                                      color: customThemeColor),
                                 ),
                               ),
                             ),

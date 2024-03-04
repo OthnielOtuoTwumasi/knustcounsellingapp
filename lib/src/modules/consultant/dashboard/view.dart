@@ -525,7 +525,7 @@ class _ConsultantDashboardPageState extends State<ConsultantDashboardPage> {
                                               child: _dashboardLogic.ratingLoader
                                                   ? SkeletonLoader(
                                                       period: const Duration(seconds: 2),
-                                                      highlightColor: Colors.grey,
+                                                   highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
                                                       direction: SkeletonDirection.ltr,
                                                       builder: Container(
                                                         height: 199.h,
@@ -805,7 +805,7 @@ class _ConsultantDashboardPageState extends State<ConsultantDashboardPage> {
                                                     _dashboardLogic.getTodayAppointmentLoader!
                                                         ? SkeletonLoader(
                                                             period: const Duration(seconds: 2),
-                                                            highlightColor: Colors.grey,
+                                                         highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
                                                             direction: SkeletonDirection.ltr,
                                                             builder: Wrap(
                                                               children: List.generate(10, (index) {

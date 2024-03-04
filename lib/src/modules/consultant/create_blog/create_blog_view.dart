@@ -142,7 +142,7 @@ class _CreateBlogPageState extends State<CreateBlogPage> {
                                 !createBlogLogic.blogCategoryLoader
                                     ? SkeletonLoader(
                                         period: const Duration(seconds: 2),
-                                        highlightColor: Colors.grey,
+                                     highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
                                         direction: SkeletonDirection.ltr,
                                         builder: IgnorePointer(
                                           ignoring: true,

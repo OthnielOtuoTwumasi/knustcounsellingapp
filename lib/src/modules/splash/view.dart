@@ -37,7 +37,7 @@ class _SplashPageState extends State<SplashPage> {
         Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/splash_background.png'), fit: BoxFit.cover)),
+          decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/drawerBackground.png'), fit: BoxFit.cover)),
         ),
         Container(
           height: MediaQuery.of(context).size.height,
@@ -55,10 +55,10 @@ class _SplashPageState extends State<SplashPage> {
           child: SafeArea(
             child: Column(
               children: [
-                SizedBox(height: MediaQuery.of(context).size.height * .05),
+                SizedBox(height: MediaQuery.of(context).size.height * .2),
                 Expanded(
                     child: Image.asset(
-                  'assets/Icons/splash_logo.jpeg',
+                  'assets/images/logo.png',
                   width: MediaQuery.of(context).size.width * .4,
                 )),
                 SizedBox(height: MediaQuery.of(context).size.height * .2),
@@ -68,7 +68,7 @@ class _SplashPageState extends State<SplashPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(height: MediaQuery.of(context).size.height * .1),
+                        // SizedBox(height: MediaQuery.of(context).size.height * .1),
                         Text(
                           'KNUST Counselling Center',
                           textAlign: TextAlign.center,

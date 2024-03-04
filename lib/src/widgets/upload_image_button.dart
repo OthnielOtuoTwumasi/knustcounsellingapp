@@ -29,6 +29,7 @@ class UploadImageButton extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 'assets/images/cloud-upload-fill.svg',
+                color: customtextDeepColor,
                 height: 22.h,
                 width: 23.w,
               ),

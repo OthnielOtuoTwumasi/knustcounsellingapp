@@ -92,7 +92,7 @@ class _AllConsultantsPageState extends State<AllConsultantsPage>
                                 isScrollable: true,
                                 controller: _allConsultantsLogic.tabController,
                                 labelColor: Colors.white,
-                                unselectedLabelColor: customLightThemeColor,
+                                unselectedLabelColor: customtextDeepColor,
                                 indicatorColor: Colors.transparent,
                                 tabs: _allConsultantsLogic.allCategoriesList),
                           ),

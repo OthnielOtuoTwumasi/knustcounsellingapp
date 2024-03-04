@@ -15,7 +15,7 @@ class EditUserProfileState {
     headingTextStyle = TextStyle(
         fontSize: 28.sp,
         fontFamily: SarabunFontFamily.bold,
-        color: customLightThemeColor);
+        color: customtextDeepColor);
     subHeadingTextStyle = TextStyle(
         fontSize: 12.sp,
         fontFamily: SarabunFontFamily.medium,
@@ -27,10 +27,10 @@ class EditUserProfileState {
     textFieldTextStyle = TextStyle(
         fontFamily: SarabunFontFamily.regular,
         fontSize: 16.sp,
-        color: Colors.black);
+        color: customtextDeepColor);
     hideTextStyle = TextStyle(
         fontFamily: SarabunFontFamily.semiBold,
         fontSize: 19.sp,
-        color: Colors.black);
+        color: customtextDeepColor);
   }
 }

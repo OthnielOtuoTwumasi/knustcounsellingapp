@@ -24,40 +24,53 @@ class _TopConsultantsState extends State<TopConsultants> {
       return _userHomeLogic.featuredConsultantLoader!
           ? SkeletonLoader(
               period: const Duration(seconds: 2),
-              highlightColor: Colors.grey,
+              highlightColor: customHighlightsColor,
+              baseColor: customFormfieldbackgroundColor,
               direction: SkeletonDirection.ltr,
               builder: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(15.w, 10.h, 15.w, 0.h),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(15.w, 10.h, 15.w, 0.h),
                       child: Container(
                         height: 15.h,
                         width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(8.r)),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8.r)),
                       )),
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: 155.h,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: List.generate(
-                        4,
-                        (index) => Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(15.w, 0, 0, 0),
-                              child: Container(
-                                height: 126.h,
-                                width: 232.w,
-                                decoration: BoxDecoration(borderRadius: BorderRadius.circular(9.r), color: Colors.white),
-                              ),
+                    child: ListView.builder(
+                      itemCount: 50,
+                      itemBuilder: (context, index) {
+                        return ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: List.generate(
+                            4,
+                            (index) => Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      15.w, 0, 0, 0),
+                                  child: Container(
+                                    height: 126.h,
+                                    width: 232.w,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(9.r),
+                                        color: Colors.white),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ],
@@ -69,7 +82,8 @@ class _TopConsultantsState extends State<TopConsultants> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(15.w, 10.h, 15.w, 0.h),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(15.w, 10.h, 15.w, 0.h),
                       child: Text(
                         LanguageConstant.featuredConsultants.tr,
                         style: state.subHeadingTextStyle,
@@ -86,14 +100,18 @@ class _TopConsultantsState extends State<TopConsultants> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(15.w, 0, 0, 0),
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    15.w, 0, 0, 0),
                                 child: InkWell(
                                   onTap: () {
-                                    _userHomeLogic.selectedConsultantID = _userHomeLogic.topConsultants[index].id;
-                                    _userHomeLogic.selectedConsultantName = '${_userHomeLogic.topConsultants[index].title}';
+                                    _userHomeLogic.selectedConsultantID =
+                                        _userHomeLogic.topConsultants[index].id;
+                                    _userHomeLogic.selectedConsultantName =
+                                        '${_userHomeLogic.topConsultants[index].title}';
 
                                     _userHomeLogic.update();
-                                    Get.toNamed(PageRoutes.consultantProfileForUser);
+                                    Get.toNamed(
+                                        PageRoutes.consultantProfileForUser);
                                   },
                                   child: Stack(
                                     // ignore: deprecated_member_use
@@ -102,7 +120,12 @@ class _TopConsultantsState extends State<TopConsultants> {
                                       Container(
                                         height: 126.h,
                                         width: 232.w,
-                                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(9.r), color: index % 2 == 0 ? customLightThemeColor : customOrangeColor),
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(9.r),
+                                            color: index % 2 == 0
+                                                ? customLightThemeColor
+                                                : customLightThemeColor),
                                         child: Stack(
                                           children: [
                                             PositionedDirectional(
@@ -113,15 +136,24 @@ class _TopConsultantsState extends State<TopConsultants> {
                                                   width: 140.w,
                                                 )),
                                             Padding(
-                                              padding: EdgeInsetsDirectional.fromSTEB(15.w, 15.h, 0, 0),
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(15.w, 15.h, 0, 0),
                                               child: Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
                                                 children: [
                                                   ///---title
-                                                  Text(
-                                                    '${_userHomeLogic.topConsultants[index].title}',
-                                                    style: state.topTitleTextStyle,
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(right: 100),
+                                                    child: Text(
+                                                      '${_userHomeLogic.topConsultants[index].title}',
+                                                      style:
+                                                          state.topTitleTextStyle,
+                                                      maxLines: 2,
+                                                      softWrap: true,
+                                                    ),
                                                   ),
                                                   SizedBox(
                                                     height: 6.h,
@@ -134,8 +166,10 @@ class _TopConsultantsState extends State<TopConsultants> {
                                                       '${_userHomeLogic.topConsultants[index].subTitle}',
                                                       maxLines: 2,
                                                       softWrap: true,
-                                                      overflow: TextOverflow.ellipsis,
-                                                      style: state.topSubTitleTextStyle,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      style: state
+                                                          .topSubTitleTextStyle,
                                                     ),
                                                   ),
 
@@ -159,15 +193,25 @@ class _TopConsultantsState extends State<TopConsultants> {
                                       PositionedDirectional(
                                           end: 12.w,
                                           top: -15.h,
-                                          child: Image.asset(
-                                            _userHomeLogic.topConsultants[index].gender == null
-                                                ? 'assets/images/stackImage.png'
-                                                : _userHomeLogic.topConsultants[index].gender!.toUpperCase() == 'MALE'
-                                                    ? 'assets/images/stackImage.png'
-                                                    : 'assets/images/female.png',
+                                          child:   Image.network(
+                                            _userHomeLogic.topConsultants[index].image!
+                                            // _userHomeLogic.topConsultants[index]
+                                            //             .gender ==
+                                            //         null
+                                            //     ? 'assets/images/stackImage.png'
+                                            //     : _userHomeLogic
+                                            //                 .topConsultants[
+                                            //                     index]
+                                            //                 .gender!
+                                            //                 .toUpperCase() ==
+                                            //             'MALE'
+                                            //         ? 'assets/images/stackImage.png'
+                                            //         : 'assets/images/female.png',
+                                            ,
                                             width: 100.w,
                                             height: 147.h,
                                           )),
+
                                     ],
                                   ),
                                 ),

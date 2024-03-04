@@ -58,7 +58,7 @@ class _ConsultantMyProfilePageState extends State<ConsultantMyProfilePage> {
             body: _myProfileLogic.loader!
                 ? SkeletonLoader(
                     period: const Duration(seconds: 2),
-                    highlightColor: Colors.grey,
+                 highlightColor: customHighlightsColor, baseColor: customFormfieldbackgroundColor,
                     direction: SkeletonDirection.ltr,
                     builder: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.start, children: [
                       Padding(

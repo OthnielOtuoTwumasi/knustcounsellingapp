@@ -86,7 +86,7 @@ class _MyAppointmentPageState extends State<MyAppointmentPage> with SingleTicker
                             labelColor: Colors.white,
                             labelStyle: state.tabBarSelectedTextStyle,
                             unselectedLabelStyle: state.tabBarUnSelectedTextStyle,
-                            unselectedLabelColor: customLightThemeColor,
+                            unselectedLabelColor: customtextDeepColor,
                             tabs: _myAppointmentLogic.tabBarList,
                           )),
                           pinned: true,

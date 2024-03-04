@@ -46,25 +46,50 @@ class _SearchConsultantPageState extends State<SearchConsultantPage> {
                       autofocus: true,
                       textInputAction: TextInputAction.search,
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsetsDirectional.fromSTEB(25.w, 15.h, 25.w, 15.h),
+                        contentPadding: EdgeInsetsDirectional.fromSTEB(
+                            25.w, 15.h, 25.w, 15.h),
                         hintText: 'Search Counsellors Here....',
                         hintStyle: state.hintTextStyle,
                         fillColor: customTextFieldColor,
                         filled: true,
-                        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(8.r), borderSide: const BorderSide(color: Colors.transparent)),
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8.r), borderSide: const BorderSide(color: Colors.transparent)),
-                        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(8.r), borderSide: const BorderSide(color: customLightThemeColor)),
-                        errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(8.r), borderSide: const BorderSide(color: Colors.red)),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.r),
+                            borderSide:
+                                const BorderSide(color: Colors.transparent)),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.r),
+                            borderSide:
+                                const BorderSide(color: Colors.transparent)),
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.r),
+                            borderSide:
+                                const BorderSide(color: customLightThemeColor)),
+                        errorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.r),
+                            borderSide: const BorderSide(color: Colors.red)),
                       ),
                       onFieldSubmitted: (value) {
                         if (value.isNotEmpty) {
                           _searchConsultantLogic.updateSearchLoader(true);
-                          getMethod(context, searchConsultantUrl, {'search': _searchConsultantLogic.searchController.text}, true, consultantSearchRepo);
+                          getMethod(
+                              context,
+                              searchConsultantUrl,
+                              {
+                                'search':
+                                    _searchConsultantLogic.searchController.text
+                              },
+                              true,
+                              consultantSearchRepo);
                         }
                       },
                       onChanged: (value) {
-                        if (value.isEmpty) {
-                          _searchConsultantLogic.searchConsultantModel = SearchConsultantModel();
+                        if (value.isNotEmpty) {
+                          _searchConsultantLogic.updateSearchLoader(true);
+                          getMethod(context, searchConsultantUrl,
+                              {'search': value}, true, consultantSearchRepo);
+                        } else {
+                          _searchConsultantLogic.searchConsultantModel =
+                              SearchConsultantModel();
                           _searchConsultantLogic.updateSearchLoader(false);
                         }
                       },
@@ -82,7 +107,8 @@ class _SearchConsultantPageState extends State<SearchConsultantPage> {
                   _searchConsultantLogic.searchLoader!
                       ? SkeletonLoader(
                           period: const Duration(seconds: 2),
-                          highlightColor: Colors.grey,
+                          highlightColor: customHighlightsColor,
+                          baseColor: customFormfieldbackgroundColor,
                           direction: SkeletonDirection.ltr,
                           builder: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,18 +118,25 @@ class _SearchConsultantPageState extends State<SearchConsultantPage> {
                                 child: Wrap(
                                   children: List.generate(4, (index) {
                                     return Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(15.w, 0.h, 15.w, 15.h),
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15.w, 0.h, 15.w, 15.h),
                                       child: Container(
                                         height: 109.h,
-                                        width: MediaQuery.of(context).size.width,
-                                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(8.r), boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.grey.withOpacity(0.2),
-                                            spreadRadius: -2,
-                                            blurRadius: 15,
-                                            // offset: Offset(1,5)
-                                          )
-                                        ]),
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(8.r),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.grey
+                                                    .withOpacity(0.2),
+                                                spreadRadius: -2,
+                                                blurRadius: 15,
+                                                // offset: Offset(1,5)
+                                              )
+                                            ]),
                                       ),
                                     );
                                   }),
@@ -111,131 +144,292 @@ class _SearchConsultantPageState extends State<SearchConsultantPage> {
                               ),
                             ],
                           ))
-                      : _searchConsultantLogic.searchConsultantModel.data == null
+                      : _searchConsultantLogic.searchConsultantModel.data ==
+                              null
                           ? const SizedBox()
                           : SingleChildScrollView(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Center(
-                                    child: Wrap(
-                                      children: List.generate(_searchConsultantLogic.searchConsultantModel.data!.results!.length, (index) {
-                                        return Padding(
-                                          padding: EdgeInsetsDirectional.fromSTEB(15.w, 0.h, 15.w, 15.h),
-                                          child: InkWell(
-                                            onTap: () {
-                                              Get.find<UserHomeLogic>().selectedConsultantID = _searchConsultantLogic.searchConsultantModel.data!.results![index].userId;
-                                              Get.find<UserHomeLogic>().selectedConsultantName = '${_searchConsultantLogic.searchConsultantModel.data!.results![index].user!.firstName} '
-                                                  '${_searchConsultantLogic.searchConsultantModel.data!.results![index].user!.lastName}';
-                                              _searchConsultantLogic.update();
-                                              Get.toNamed(PageRoutes.consultantProfileForUser);
-                                            },
-                                            child: Container(
-                                              height: 109.h,
-                                              width: MediaQuery.of(context).size.width,
-                                              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(8.r), boxShadow: [
-                                                BoxShadow(
-                                                  color: Colors.grey.withOpacity(0.2),
-                                                  spreadRadius: -2,
-                                                  blurRadius: 15,
-                                                  // offset: Offset(1,5)
-                                                )
-                                              ]),
+                                  _searchConsultantLogic.searchConsultantModel
+                                          .data!.results!.isEmpty
+                                      ? Column(
+                                          children: [
+                                            const Text(
+                                              'No results found',
+                                              style: TextStyle(
+                                                  color: customtextDeepColor),
+                                            ),
+                                            const SizedBox(
+                                              height: 15,
+                                            ),
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                color: customTextFieldColor,
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                              ),
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional.fromSTEB(18.w, 12.h, 18.w, 12.h),
-                                                child: Row(
-                                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                                  children: [
-                                                    ///---profile-image
-                                                    Material(
-                                                      color: customLightThemeColor,
-                                                      borderRadius: BorderRadius.circular(8.r),
-                                                      child: _searchConsultantLogic.searchConsultantModel.data!.results![index].user!.imagePath == null
-                                                          ? SizedBox(
-                                                              width: 76.w,
-                                                              height: 85.h,
-                                                            )
-                                                          : ClipRRect(
-                                                              borderRadius: BorderRadius.circular(8.r),
-                                                              child: Image.network(
-                                                                _searchConsultantLogic.searchConsultantModel.data!.results![index].user!.imagePath!.contains('assets')
-                                                                    ? '$mediaUrl${_searchConsultantLogic.searchConsultantModel.data!.results![index].user!.imagePath}'
-                                                                    : '${_searchConsultantLogic.searchConsultantModel.data!.results![index].user!.imagePath}',
-                                                                width: 76.w,
-                                                                height: 85.h,
-                                                                fit: BoxFit.cover,
-                                                                errorBuilder: (context, error, stackTrace) {
-                                                                  return SizedBox(width: 76.w, height: 85.h, child: Icon(Icons.broken_image));
-                                                                },
-                                                              ),
-                                                            ),
+                                                padding: const EdgeInsets.only(
+                                                    left: 15.0,
+                                                    right: 15,
+                                                    top: 8,
+                                                    bottom: 8),
+                                                child: Wrap(
+                                                  crossAxisAlignment:
+                                                      WrapCrossAlignment.center,
+                                                  children: <Widget>[
+                                                    GestureDetector(
+                                                      onTap: () {
+                                                        Get.toNamed(PageRoutes
+                                                            .allConsultants);
+                                                      },
+                                                      child: const Text(
+                                                        'View All Counsellors',
+                                                        style: TextStyle(
+                                                          color:
+                                                              customtextDeepColor,
+                                                          fontSize: 13,
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                        ),
+                                                      ),
                                                     ),
-                                                    SizedBox(
-                                                      width: 21.w,
+                                                    const SizedBox(
+                                                      width: 10,
                                                     ),
-                                                    Column(
-                                                      mainAxisAlignment: MainAxisAlignment.start,
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-                                                        SizedBox(
-                                                          height: 6.h,
-                                                        ),
-
-                                                        ///---title
-                                                        Text(
-                                                          '${_searchConsultantLogic.searchConsultantModel.data!.results![index].user!.firstName} '
-                                                          '${_searchConsultantLogic.searchConsultantModel.data!.results![index].user!.lastName}',
-                                                          softWrap: true,
-                                                          overflow: TextOverflow.ellipsis,
-                                                          style: state.topTitleTextStyle!.copyWith(color: customTextBlackColor),
-                                                        ),
-                                                        SizedBox(
-                                                          height: 5.h,
-                                                        ),
-
-                                                        ///---sub-title
-                                                        Text(
-                                                          '${_searchConsultantLogic.searchConsultantModel.data!.results![index].category!.name}',
-                                                          softWrap: true,
-                                                          overflow: TextOverflow.ellipsis,
-                                                          style: state.topSubTitleTextStyle!.copyWith(color: customTextBlackColor),
-                                                        ),
-                                                        const Spacer(),
-
-                                                        ///---rating-bar
-                                                        RatingBar.builder(
-                                                          ignoreGestures: true,
-                                                          initialRating: double.parse(_searchConsultantLogic.searchConsultantModel.data!.results![index].ratingAvg.toString()),
-                                                          minRating: 1,
-                                                          direction: Axis.horizontal,
-                                                          allowHalfRating: true,
-                                                          itemCount: 5,
-                                                          itemSize: 15,
-                                                          itemPadding: const EdgeInsets.symmetric(horizontal: 0.0),
-                                                          itemBuilder: (context, _) => SvgPicture.asset('assets/Icons/ratingStarIcon.svg'),
-                                                          onRatingUpdate: (rating) {},
-                                                        ),
-                                                        SizedBox(
-                                                          height: 6.h,
-                                                        ),
-                                                      ],
+                                                    const Icon(
+                                                      Icons
+                                                          .arrow_right_alt_rounded,
+                                                      color:
+                                                          customtextDeepColor,
                                                     ),
-                                                    const Spacer(),
-                                                    SvgPicture.asset(
-                                                      'assets/Icons/forwardBlueIcon.svg',
-                                                      width: 29.w,
-                                                      height: 29.h,
-                                                    )
                                                   ],
                                                 ),
                                               ),
                                             ),
+                                          ],
+                                        )
+                                      : Center(
+                                          child: Wrap(
+                                            children: List.generate(
+                                                _searchConsultantLogic
+                                                    .searchConsultantModel
+                                                    .data!
+                                                    .results!
+                                                    .length, (index) {
+                                              return Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        15.w, 0.h, 15.w, 15.h),
+                                                child: InkWell(
+                                                  onTap: () {
+                                                    Get.find<UserHomeLogic>()
+                                                            .selectedConsultantID =
+                                                        _searchConsultantLogic
+                                                            .searchConsultantModel
+                                                            .data!
+                                                            .results![index]
+                                                            .userId;
+                                                    Get.find<UserHomeLogic>()
+                                                            .selectedConsultantName =
+                                                        '${_searchConsultantLogic.searchConsultantModel.data!.results![index].user!.firstName} '
+                                                        '${_searchConsultantLogic.searchConsultantModel.data!.results![index].user!.lastName}';
+                                                    _searchConsultantLogic
+                                                        .update();
+                                                    Get.toNamed(PageRoutes
+                                                        .consultantProfileForUser);
+                                                  },
+                                                  child: Container(
+                                                    height: 109.h,
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                            .size
+                                                            .width,
+                                                    decoration: BoxDecoration(
+                                                        color: Colors.white,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.r),
+                                                        boxShadow: [
+                                                          BoxShadow(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.2),
+                                                            spreadRadius: -2,
+                                                            blurRadius: 15,
+                                                            // offset: Offset(1,5)
+                                                          )
+                                                        ]),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  18.w,
+                                                                  12.h,
+                                                                  18.w,
+                                                                  12.h),
+                                                      child: Row(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          ///---profile-image
+                                                          Material(
+                                                            color:
+                                                                customFormfieldbackgroundColor,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.r),
+                                                            child: _searchConsultantLogic
+                                                                        .searchConsultantModel
+                                                                        .data!
+                                                                        .results![
+                                                                            index]
+                                                                        .user!
+                                                                        .imagePath ==
+                                                                    null
+                                                                ? SizedBox(
+                                                                    width: 76.w,
+                                                                    height:
+                                                                        85.h,
+                                                                  )
+                                                                : ClipRRect(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.r),
+                                                                    child: Image
+                                                                        .network(
+                                                                      _searchConsultantLogic
+                                                                              .searchConsultantModel
+                                                                              .data!
+                                                                              .results![index]
+                                                                              .user!
+                                                                              .imagePath!
+                                                                              .contains('assets')
+                                                                          ? '$mediaUrl${_searchConsultantLogic.searchConsultantModel.data!.results![index].user!.imagePath}'
+                                                                          : '${_searchConsultantLogic.searchConsultantModel.data!.results![index].user!.imagePath}',
+                                                                      width:
+                                                                          76.w,
+                                                                      height:
+                                                                          85.h,
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                      errorBuilder: (context,
+                                                                          error,
+                                                                          stackTrace) {
+                                                                        return SizedBox(
+                                                                            width:
+                                                                                76.w,
+                                                                            height: 85.h,
+                                                                            child: const Icon(Icons.broken_image));
+                                                                      },
+                                                                    ),
+                                                                  ),
+                                                          ),
+                                                          SizedBox(
+                                                            width: 21.w,
+                                                          ),
+                                                          Column(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              SizedBox(
+                                                                height: 6.h,
+                                                              ),
+
+                                                              ///---title
+                                                              Text(
+                                                                '${_searchConsultantLogic.searchConsultantModel.data!.results![index].user!.firstName} '
+                                                                '${_searchConsultantLogic.searchConsultantModel.data!.results![index].user!.lastName}',
+                                                                softWrap: true,
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
+                                                                style: state
+                                                                    .topTitleTextStyle!
+                                                                    .copyWith(
+                                                                        color:
+                                                                            customtextDeepColor),
+                                                              ),
+                                                              SizedBox(
+                                                                height: 5.h,
+                                                              ),
+
+                                                              ///---sub-title
+                                                              Text(
+                                                                '${_searchConsultantLogic.searchConsultantModel.data!.results![index].category!.name}',
+                                                                softWrap: true,
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
+                                                                style: state
+                                                                    .topSubTitleTextStyle!
+                                                                    .copyWith(
+                                                                        color:
+                                                                            customTextBlackColor),
+                                                              ),
+                                                              const Spacer(),
+
+                                                              ///---rating-bar
+                                                              RatingBar.builder(
+                                                                ignoreGestures:
+                                                                    true,
+                                                                initialRating: double.parse(_searchConsultantLogic
+                                                                    .searchConsultantModel
+                                                                    .data!
+                                                                    .results![
+                                                                        index]
+                                                                    .ratingAvg
+                                                                    .toString()),
+                                                                minRating: 1,
+                                                                direction: Axis
+                                                                    .horizontal,
+                                                                allowHalfRating:
+                                                                    true,
+                                                                itemCount: 5,
+                                                                itemSize: 15,
+                                                                unratedColor:
+                                                                    customFormfieldbackgroundColor,
+                                                                itemPadding:
+                                                                    const EdgeInsets
+                                                                        .symmetric(
+                                                                        horizontal:
+                                                                            0.0),
+                                                                itemBuilder: (context,
+                                                                        _) =>
+                                                                    SvgPicture
+                                                                        .asset(
+                                                                            'assets/Icons/ratingStarIcon.svg'),
+                                                                onRatingUpdate:
+                                                                    (rating) {},
+                                                              ),
+                                                              SizedBox(
+                                                                height: 6.h,
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          const Spacer(),
+                                                          SvgPicture.asset(
+                                                            'assets/Icons/forwardBlueIcon.svg',
+                                                            width: 29.w,
+                                                            height: 29.h,
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            }),
                                           ),
-                                        );
-                                      }),
-                                    ),
-                                  ),
+                                        ),
                                   SizedBox(
                                     height: 25.h,
                                   ),

@@ -20,11 +20,11 @@ class UserHomeState {
     subHeadingTextStyle = TextStyle(
       fontFamily: SarabunFontFamily.extraBold,
       fontSize: 20.sp,
-      color: customTextBlackColor
+      color: customtextDeepColor
     );
     viewAllTextStyle = TextStyle(
       fontFamily: SarabunFontFamily.medium,
-      fontSize: 12.sp,
+      fontSize: 14.sp,
       color: customThemeColor,
       decoration: TextDecoration.underline
     );

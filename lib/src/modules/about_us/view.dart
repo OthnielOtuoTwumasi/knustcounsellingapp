@@ -91,9 +91,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
                                   padding:
                                       EdgeInsetsDirectional.only(end: 14.w),
                                   child: Text(
-                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-                                    'Pellentesque sem elit, tempus ac justo eu, pellentesque laoreet velit. '
-                                    'Suspendisse lobortis a lacus quis pretium. Aliquam posuere auctor fermentum.',
+                                   LanguageConstant.visionText.tr,
                                     // softWrap: true,
                                     // overflow: TextOverflow.ellipsis,
                                     // maxLines: 5,
@@ -161,9 +159,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
                                   // SizedBox(width: 15.w),
                                   Expanded(
                                     child: Text(
-                                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-                                      'Pellentesque sem elit, tempus ac justo eu, pellentesque laoreet velit. '
-                                      'Suspendisse lobortis a lacus quis pretium. Aliquam posuere auctor fermentum.',
+                                      LanguageConstant.missionText.tr,
                                       // softWrap: true,
                                       // overflow: TextOverflow.ellipsis,
                                       // maxLines: 5,
@@ -197,12 +193,12 @@ class _AboutUsPageState extends State<AboutUsPage> {
                                 children: [
                                   Padding(
                                     padding:
-                                        EdgeInsetsDirectional.only(top: 16.h),
+                                    EdgeInsetsDirectional.only(top: 16.h),
                                     child: Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.center,
+                                      CrossAxisAlignment.center,
                                       mainAxisAlignment:
-                                          MainAxisAlignment.start,
+                                      MainAxisAlignment.start,
                                       children: [
                                         Container(
                                             width: 74,
@@ -217,12 +213,12 @@ class _AboutUsPageState extends State<AboutUsPage> {
                                       color: customLightThemeColor,
                                       child: Padding(
                                         padding:
-                                            const EdgeInsetsDirectional.all(15),
+                                        const EdgeInsetsDirectional.all(15),
                                         child: Column(
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                           mainAxisAlignment:
-                                              MainAxisAlignment.start,
+                                          MainAxisAlignment.start,
                                           children: [
                                             ///---heading
                                             Text(
@@ -235,12 +231,11 @@ class _AboutUsPageState extends State<AboutUsPage> {
 
                                             ///---detail
                                             Text(
-                                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sem elit, '
-                                                      'tempus ac justo eu, pellentesque laoreet'
+                                              LanguageConstant.easySignUpText
                                                   .tr,
                                               style: state.descTextStyle
                                                   ?.copyWith(
-                                                      color: Colors.white),
+                                                  color: Colors.white),
                                             ),
                                           ],
                                         ),
@@ -262,12 +257,12 @@ class _AboutUsPageState extends State<AboutUsPage> {
                                 children: [
                                   Padding(
                                     padding:
-                                        EdgeInsetsDirectional.only(top: 16.h),
+                                    EdgeInsetsDirectional.only(top: 16.h),
                                     child: Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.center,
+                                      CrossAxisAlignment.center,
                                       mainAxisAlignment:
-                                          MainAxisAlignment.start,
+                                      MainAxisAlignment.start,
                                       children: [
                                         Container(
                                             width: 74,
@@ -282,14 +277,15 @@ class _AboutUsPageState extends State<AboutUsPage> {
                                       color: customLightThemeColor,
                                       child: Padding(
                                         padding:
-                                            const EdgeInsetsDirectional.all(15),
+                                        const EdgeInsetsDirectional.all(15),
                                         child: Column(
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                           mainAxisAlignment:
-                                              MainAxisAlignment.start,
+                                          MainAxisAlignment.start,
                                           children: [
                                             ///---heading
+
                                             Text(
                                               LanguageConstant
                                                   .professionalConsultants.tr,
@@ -301,12 +297,147 @@ class _AboutUsPageState extends State<AboutUsPage> {
 
                                             ///---detail
                                             Text(
-                                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sem elit, '
-                                                      'tempus ac justo eu, pellentesque laoreet'
+                                              LanguageConstant.professionalCounsellorsText.tr,
+                                              style: state.descTextStyle
+                                                  ?.copyWith(
+                                                  color: Colors.white),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            ///fghfh
+                            Container(
+                              height: 1,
+                              width: MediaQuery.of(context).size.width,
+                              color: Colors.grey,
+                            ),
+                            Container(
+                              color: customThemeColor,
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding:
+                                    EdgeInsetsDirectional.only(top: 16.h),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                            width: 74,
+                                            color: customThemeColor,
+                                            child: SvgPicture.asset(
+                                                'assets/Icons/check-circle.svg')),
+                                      ],
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      color: customLightThemeColor,
+                                      child: Padding(
+                                        padding:
+                                        const EdgeInsetsDirectional.all(15),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                          children: [
+                                            ///---heading
+                                            Text(
+                                              // LanguageConstant.easySignUp.tr,
+                                              LanguageConstant.multipleWaysCounsellorsHeading.tr,
+                                              style: state.subHeadingTextStyle,
+                                            ),
+                                            const SizedBox(
+                                              height: 12,
+                                            ),
+
+                                            ///---detail
+                                            Text(
+                                              LanguageConstant.multipleWaysCounsellorsText
                                                   .tr,
                                               style: state.descTextStyle
                                                   ?.copyWith(
-                                                      color: Colors.white),
+                                                  color: Colors.white),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            ///hthth
+                            Container(
+                              height: 1,
+                              width: MediaQuery.of(context).size.width,
+                              color: Colors.grey,
+                            ),
+                            Container(
+                              height: 1,
+                              width: MediaQuery.of(context).size.width,
+                              color: Colors.grey,
+                            ),
+                            Container(
+                              color: customThemeColor,
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding:
+                                    EdgeInsetsDirectional.only(top: 16.h),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                            width: 74,
+                                            color: customThemeColor,
+                                            child: SvgPicture.asset(
+                                                'assets/Icons/check-circle.svg')),
+                                      ],
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      color: customLightThemeColor,
+                                      child: Padding(
+                                        padding:
+                                        const EdgeInsetsDirectional.all(15),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                          children: [
+                                            ///---heading
+                                            Text(
+                                              LanguageConstant.confidentialityAssuredHeading.tr,
+                                              //LanguageConstant.easySignUp.tr,
+                                              style: state.subHeadingTextStyle,
+                                            ),
+                                            const SizedBox(
+                                              height: 12,
+                                            ),
+
+                                            ///---detail
+                                            Text(
+                                              LanguageConstant.confidentialityAssuredText
+                                                  .tr,
+                                              style: state.descTextStyle
+                                                  ?.copyWith(
+                                                  color: Colors.white),
                                             ),
                                           ],
                                         ),

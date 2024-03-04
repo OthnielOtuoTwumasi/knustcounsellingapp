@@ -1303,36 +1303,13 @@ class _ModalInsideModalForConsultantState
                                   if (!currentFocus.hasPrimaryFocus) {
                                     currentFocus.unfocus();
                                   }
-                                  if (noteFormKey.currentState!.validate()) {
-                                    if (degreeImage != null) {
+
                                       _consultantAppointmentDetailLogic
                                           .updateFormLoaderController(true);
                                       fileAttachmentRepo(
                                         degreeImage,
                                       );
-                                    } else {
-                                      showDialog(
-                                          context: context,
-                                          barrierDismissible: false,
-                                          builder: (BuildContext context) {
-                                            return CustomDialogBox(
-                                              title: LanguageConstant.sorry.tr,
-                                              titleColor:
-                                                  customDialogErrorColor,
-                                              descriptions:
-                                                  // LanguageConstant
-                                                  //     .uploadYourDegreePicture.tr,
-                                                  'Upload Any Attachment',
-                                              text: LanguageConstant.ok.tr,
-                                              functionCall: () {
-                                                Navigator.pop(context);
-                                              },
-                                              img:
-                                                  'assets/Icons/dialog_error.svg',
-                                            );
-                                          });
-                                    }
-                                  }
+
                                 },
                                 child: Text(
                                   LanguageConstant.submit.tr,
